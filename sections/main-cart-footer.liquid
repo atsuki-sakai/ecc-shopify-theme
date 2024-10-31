@@ -435,8 +435,10 @@
                 </div>
               </div>
 
+             {% comment %}
+               style="{% if flag %}display: none; {% else %}{% endif %} display"
+             {% endcomment %}
               <div
-                <!-- style="{% if flag %}display: none; {% else %}{% endif %} display" -->
                 style="display:none;"
                 class="cart__ctas"
                 {{ block.shopify_attributes }}
