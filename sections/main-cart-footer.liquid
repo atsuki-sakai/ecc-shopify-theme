@@ -501,7 +501,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (previousValue === "false") {
                 buyButton.innerText = {{ 'sections.cart.checkout' | t | json }};
                 buyButton.style.pointerEvents = "auto";
-                buyButton.style.cursor = "auto";
+                buyButton.style.cursor = "pointer";
                 return;
             }
 
@@ -514,7 +514,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             previousValue = newValue; // 新しい値を保存
                             buyButton.innerText = {{ 'sections.cart.checkout' | t | json }};
                             buyButton.style.pointerEvents = "auto";
-                          buyButton.style.cursor = "auto";
+                            buyButton.style.cursor = "pointer";
                         }
                     }
                 });
