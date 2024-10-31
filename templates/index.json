@@ -384,6 +384,16 @@
     "review_slider_JWbgn9": {
       "type": "review-slider",
       "blocks": {
+        "review_MNYhPm": {
+          "type": "review",
+          "settings": {
+            "customer_avator": "shopify://shop_images/1_a219b840-8d46-41ab-8ae4-c12be0df872d.png",
+            "product": "elara100-トーニングシートマスク",
+            "customer_name": "U★ 様",
+            "rating": 4,
+            "review": "<p>良かったので友達にプレゼントしました!</p>"
+          }
+        },
         "review_8bQJNR": {
           "type": "review",
           "settings": {
@@ -392,16 +402,6 @@
             "customer_name": "２a 様",
             "rating": 4,
             "review": "<p>初回半額なので試してみました。テクスチャーが気に入ってて、高いけど他には何もいらないしトラブルもないので続けてます</p>"
-          }
-        },
-        "review_MNYhPm": {
-          "type": "review",
-          "settings": {
-            "customer_avator": "shopify://shop_images/8.png",
-            "product": "グリーンプロポリス-ソフトカプセル90粒",
-            "customer_name": "U★ 様",
-            "rating": 4,
-            "review": "<p>良かったので友達にプレゼントしました!</p>"
           }
         },
         "review_CkEYqK": {
@@ -426,8 +426,8 @@
         }
       },
       "block_order": [
-        "review_8bQJNR",
         "review_MNYhPm",
+        "review_8bQJNR",
         "review_CkEYqK",
         "review_fQXnw4"
       ],
