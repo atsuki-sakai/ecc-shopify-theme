@@ -463,7 +463,7 @@
                   style="{% if flag %}display: none; {% else %}{% endif %}"
                 {% endcomment %}
                 <div
-                  style="pointer-events:none;"
+                  style="display: none;"
                   class="cart__dynamic-checkout-buttons additional-checkout-buttons"
                 >
                   {{ content_for_additional_checkout_buttons }}
@@ -505,7 +505,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                             // ボタンを表示
                             buyButton.style.display = 'block';
-                            additionalBuyButton.style.pointerEvents = "auto";
+                            additionalBuyButton.style.display = "block";
                         }
                     }
                 });
