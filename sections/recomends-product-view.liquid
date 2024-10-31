@@ -283,122 +283,129 @@
                   <span>{{ catchCopy }}</span>
                 {% endif %}
                 <h2>{{ product.title }}</h2>
-               <p class="product-item__info-price">{{ product.price | money_without_trailing_zeros }}</p>
+                <p class="product-item__info-price">{{ product.price | money_without_trailing_zeros }}</p>
                 <p>{{ product.description | strip_html | truncate: 120 }}</p>
-            
               </div>
             </a>
           {% endfor %}
         </div>
 
-        {% for block in section.blocks %}
-          {% case block.type %}
-            {% when 'image-banner' %}
-              <a class="recomends-product__block-link" href="{{ block.settings.banner_link }}">
-                <div class="recomends-product__banner">
-                  {% if block.settings['pc_banner_image-jp'] %}
-                    {% if country_code == 'en' %}
-                      <picture>
-                        <source
-                          media="(max-width: 640px)"
-                          srcset="{{ block.settings.sp_banner_image-en | image_url }}"
-                          width="804"
-                          height="420"
-                        >
-                        <source
-                          media="(min-width: 641px)"
-                          srcset="{{ block.settings.pc_banner_image-en | image_url }}"
-                          width="1440"
-                          height="346"
-                        >
-                        <img
-                          src="{{ block.settings.pc_banner_image-en | image_url }}"
-                          alt="Banner Image"
-                          width="1440"
-                          height="346"
-                        >
-                      </picture>
+        <style>
+          .recomends-view__banner-box {
+            display: flex;
+          }
+        </style>
 
-                    {% elsif country_code == 'zh' %}
-                      <picture>
-                        <source
-                          media="(max-width: 640px)"
-                          srcset="{{ block.settings.sp_banner_image-zh | image_url }}"
-                          width="804"
-                          height="420"
-                        >
-                        <source
-                          media="(min-width: 641px)"
-                          srcset="{{ block.settings.pc_banner_image-zh | image_url }}"
-                          width="1440"
-                          height="346"
-                        >
-                        <img
-                          src="{{ block.settings.pc_banner_image-zh | image_url }}"
-                          alt="Banner Image"
-                          width="1440"
-                          height="346"
-                        >
-                      </picture>
+        <div class="recomends-view__banner-box">
+          {% for block in section.blocks %}
+            {% case block.type %}
+              {% when 'image-banner' %}
+                <a class="recomends-product__block-link" href="{{ block.settings.banner_link }}">
+                  <div class="recomends-product__banner">
+                    {% if block.settings['pc_banner_image-jp'] %}
+                      {% if country_code == 'en' %}
+                        <picture>
+                          <source
+                            media="(max-width: 640px)"
+                            srcset="{{ block.settings.sp_banner_image-en | image_url }}"
+                            width="804"
+                            height="420"
+                          >
+                          <source
+                            media="(min-width: 641px)"
+                            srcset="{{ block.settings.pc_banner_image-en | image_url }}"
+                            width="1440"
+                            height="346"
+                          >
+                          <img
+                            src="{{ block.settings.pc_banner_image-en | image_url }}"
+                            alt="Banner Image"
+                            width="1440"
+                            height="346"
+                          >
+                        </picture>
+
+                      {% elsif country_code == 'zh' %}
+                        <picture>
+                          <source
+                            media="(max-width: 640px)"
+                            srcset="{{ block.settings.sp_banner_image-zh | image_url }}"
+                            width="804"
+                            height="420"
+                          >
+                          <source
+                            media="(min-width: 641px)"
+                            srcset="{{ block.settings.pc_banner_image-zh | image_url }}"
+                            width="1440"
+                            height="346"
+                          >
+                          <img
+                            src="{{ block.settings.pc_banner_image-zh | image_url }}"
+                            alt="Banner Image"
+                            width="1440"
+                            height="346"
+                          >
+                        </picture>
+                      {% else %}
+                        <picture>
+                          <source
+                            media="(max-width: 640px)"
+                            srcset="{{ block.settings.sp_banner_image-jp | image_url }}"
+                            width="804"
+                            height="420"
+                          >
+                          <source
+                            media="(min-width: 641px)"
+                            srcset="{{ block.settings.pc_banner_image-jp | image_url }}"
+                            width="1440"
+                            height="346"
+                          >
+                          <img
+                            src="{{ block.settings.pc_banner_image-jp | image_url }}"
+                            alt="Banner Image"
+                            width="1440"
+                            height="346"
+                          >
+                        </picture>
+                      {% endif %}
                     {% else %}
                       <picture>
                         <source
                           media="(max-width: 640px)"
-                          srcset="{{ block.settings.sp_banner_image-jp | image_url }}"
+                          srcset="https://via.placeholder.com/804x420"
                           width="804"
                           height="420"
                         >
                         <source
                           media="(min-width: 641px)"
-                          srcset="{{ block.settings.pc_banner_image-jp | image_url }}"
+                          srcset="https://via.placeholder.com/1440x346"
                           width="1440"
                           height="346"
                         >
                         <img
-                          src="{{ block.settings.pc_banner_image-jp | image_url }}"
-                          alt="Banner Image"
+                          src="https://via.placeholder.com/1440x346"
+                          alt="placeholder"
                           width="1440"
                           height="346"
                         >
                       </picture>
                     {% endif %}
-                  {% else %}
-                    <picture>
-                      <source
-                        media="(max-width: 640px)"
-                        srcset="https://via.placeholder.com/804x420"
-                        width="804"
-                        height="420"
-                      >
-                      <source
-                        media="(min-width: 641px)"
-                        srcset="https://via.placeholder.com/1440x346"
-                        width="1440"
-                        height="346"
-                      >
-                      <img
-                        src="https://via.placeholder.com/1440x346"
-                        alt="placeholder"
-                        width="1440"
-                        height="346"
-                      >
-                    </picture>
-                  {% endif %}
-                </div>
-              </a>
-            {% when 'text-banner' %}
-              <a
-                class="recomends-product__banner-text"
-                href="{{ block.settings.banner_link }}"
-                style="background: {{ block.settings.banner_color }} !important; color: {{ block.settings.banner_text_color }} !important; border: 1px solid {{ block.settings.banner_text_color }};"
-              >
-                <p>
-                  {{ block.settings.text }}
-                </p>
-                <span> → </span>
-              </a>
-          {% endcase %}
-        {% endfor %}
+                  </div>
+                </a>
+              {% when 'text-banner' %}
+                <a
+                  class="recomends-product__banner-text"
+                  href="{{ block.settings.banner_link }}"
+                  style="background: {{ block.settings.banner_color }} !important; color: {{ block.settings.banner_text_color }} !important; border: 1px solid {{ block.settings.banner_text_color }};"
+                >
+                  <p>
+                    {{ block.settings.text }}
+                  </p>
+                  <span> → </span>
+                </a>
+            {% endcase %}
+          {% endfor %}
+        </div>
       </div>
     </didv>
   </div>
