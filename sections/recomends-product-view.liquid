@@ -392,17 +392,6 @@
                     {% endif %}
                   </div>
                 </a>
-              {% when 'text-banner' %}
-                <a
-                  class="recomends-product__banner-text"
-                  href="{{ block.settings.banner_link }}"
-                  style="background: {{ block.settings.banner_color }} !important; color: {{ block.settings.banner_text_color }} !important; border: 1px solid {{ block.settings.banner_text_color }};"
-                >
-                  <p>
-                    {{ block.settings.text }}
-                  </p>
-                  <span> → </span>
-                </a>
             {% endcase %}
           {% endfor %}
         </div>
