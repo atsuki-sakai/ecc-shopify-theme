@@ -491,7 +491,7 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log('要素が見つかりました:', targetElement);
             let previousValue = targetElement.getAttribute('samitaws-cart-subtotal-price');
             console.log('初期値:', previousValue);
-            if(previousValue === false) {
+            if(!previousValue) {
                buyButton.style.display = 'block';
               return;
             }
