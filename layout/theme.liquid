@@ -456,6 +456,8 @@ body {
       {% include 'wcp_cart' %}
     {% endif %}
   <!-- WPD End -->
-    {% render 'samita-custom' %}
+    {% unless samita-custom contains 'Liquid error' %}
+      {% render 'samita-custom' %}
+    {% endunless %}
   </body>
 </html>
