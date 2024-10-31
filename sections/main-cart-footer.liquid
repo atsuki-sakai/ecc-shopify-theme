@@ -488,6 +488,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const buyButton = buyButtons[0].firstElementChild; 
 
         buyButton.innerText = "読み込み中...";
+        buyButton.style.pointerEvents = "none";
         
         if (targetElement) {
         
@@ -498,7 +499,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // previousValueが存在しない場合、ボタンを表示
             if (previousValue === "false") {
                 buyButton.innerText = {{ 'sections.cart.checkout' | t | json }};
-                buyButton.style.pointerEvents = "none";
+                buyButton.style.pointerEvents = "auto";
                 return;
             }
 
@@ -510,7 +511,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             console.log('samitaws-cart-subtotal-priceが変更されました！');
                             previousValue = newValue; // 新しい値を保存
                             buyButton.innerText = {{ 'sections.cart.checkout' | t | json }};
-                            buyButton.style.pointerEvents = "none";
+                            buyButton.style.pointerEvents = "auto";
                         }
                     }
                 });
