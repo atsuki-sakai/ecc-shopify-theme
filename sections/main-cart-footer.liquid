@@ -473,25 +473,30 @@
 </div>
 
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      console.log('hello')
-    });
+   // 監視対象の要素を取得
+const targetElement = document.querySelector('[samitaws-cart-subtotal-price]');
 
-    document.addEventListener("samitaWSRenderWholesaleCompleted", function() {
-      console.log("Samita Wholesaleアプリの処理が完了しました");
-      // 処理完了後に実行したいコードをここに記述
-    });
+// 初期値を保存
+let previousValue = targetElement.getAttribute('samitaws-cart-subtotal-price');
 
-    document.addEventListener("samitaWS.scripts.loaded", function() {
-        console.log("Samita Wholesaleのスクリプトがロードされました");
-        // スクリプトロード完了後の処理を記述
+// MutationObserverの設定
+const observer = new MutationObserver(mutations => {
+    mutations.forEach(mutation => {
+        if (mutation.type === 'attributes' && mutation.attributeName === 'samitaws-cart-subtotal-price') {
+            const newValue = targetElement.getAttribute('samitaws-cart-subtotal-price');
+            if (newValue !== previousValue) {
+                alert('samitaws-cart-subtotal-priceが変更されました！');
+                previousValue = newValue; // 新しい値を保存
+            }
+        }
     });
+});
 
-    // Samita Wholesaleアプリの処理完了を検知
-  document.addEventListener("samitaWSRenderWholesaleCompleted", function() {
-      console.log("Samita Wholesaleアプリの処理が完了しました");
-      // 処理完了後に実行したいコードをここに記述
-  });
+// 監視を開始
+observer.observe(targetElement, {
+    attributes: true // 属性の変更を監視
+});
+
 </script>
 
 {% schema %}
