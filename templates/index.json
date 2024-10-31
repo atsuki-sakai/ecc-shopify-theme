@@ -404,43 +404,32 @@
             "review": "<p><strong>使うのが楽しみ</strong></p><p>美白効果について気になっていたので購入しました。<br/>肌の弱い私には敏感肌対応のオールインワンゲルも使ってみたいと思ったポイントです。<br/>今後のお肌の変化が楽しみです。</p>"
           }
         },
-        "review_CkEYqK": {
-          "type": "review",
-          "settings": {
-            "customer_avator": "shopify://shop_images/1_a219b840-8d46-41ab-8ae4-c12be0df872d.png",
-            "product": "elara100-トーニングシートマスク",
-            "customer_name": "Chika 様",
-            "rating": 5,
-            "review": "<p><strong>次の朝にびっくり♪</strong></p><p>このELARA100トーニングシートマスクはまず取り出しやすいです。そして広げやすい！<br/>顔に乗せると小鼻までカバーして密着してくれます♪<br/>3分とありますがあっという間で、もう少し貼っていたい気持ちを抑えて時間通りに外しました。<br/>次の朝、お肌プルプルで毛穴が目立たなくなり、何よりまぶたのこじわがなくなってる！<br/>目元ギリギリのシートのおかげです♡<br/>すごい保湿力だと思いました♪</p>"
-          }
-        },
-        "review_wRK7Hc": {
-          "type": "review",
-          "settings": {
-            "customer_avator": "shopify://shop_images/1_a219b840-8d46-41ab-8ae4-c12be0df872d.png",
-            "product": "",
-            "customer_name": "Koba様",
-            "rating": 5,
-            "review": "<p><strong>もっちりしっとり</strong></p><p>剥がしたあとの肌はしっとりもっちりつやつやで乾燥小じわが目立たなくなっていました。翌朝の肌もすべすべしていて感動でした。<br/>7つのフリー処方も嬉しいですね。水光肌を目指して続けてみたいと思います。</p>"
-          }
-        },
         "review_fQXnw4": {
           "type": "review",
           "settings": {
             "customer_avator": "shopify://shop_images/13.png",
             "product": "高濃度ブラジル産グリーンプロポリス抽出液30ml",
             "customer_name": "K.J. 様",
+            "rating": 4,
+            "review": "<p>プロポリスを日常的に摂取するようになり、喉の痛みが軽減され、風邪を引きにくくなった気がします。また、疲労感が和らぎ、体調も良好に保てています。健康維持に役立っていると実感しています。</p>"
+          }
+        },
+        "review_rAdjqX": {
+          "type": "review",
+          "settings": {
+            "customer_avator": "shopify://shop_images/9.png",
+            "product": "p-ec80",
+            "customer_name": "N.Y 様",
             "rating": 5,
-            "review": "<p>コロナ中も元気に過ごせました。</p>"
+            "review": "<p><strong>毎日の習慣になりました</strong></p><p>いつも欠かさず飲んでいるおかげか、毎日元気で過ごせています。<br/>きっと、免疫を上げたり血管強化にいいとされるプロポリスが入っているからだと思っています。<br/>人口甘味料を使っていないので甘味が苦手な方もおいしく飲めますよ～。</p>"
           }
         }
       },
       "block_order": [
         "review_MNYhPm",
         "review_8bQJNR",
-        "review_CkEYqK",
-        "review_wRK7Hc",
-        "review_fQXnw4"
+        "review_fQXnw4",
+        "review_rAdjqX"
       ],
       "settings": {
         "heading": "PICKUP REVIEW",
