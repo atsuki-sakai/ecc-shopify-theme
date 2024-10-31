@@ -471,8 +471,7 @@
     </div>
   </div>
 </div>
-<!-- 例: buybuttonsボタンの追加 -->
-<button id="buybuttons" style="display: none;">購入する</button>
+
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
@@ -484,7 +483,8 @@ document.addEventListener('DOMContentLoaded', () => {
             let previousValue = targetElement.getAttribute('samitaws-cart-subtotal-price');
             console.log('初期値:', previousValue);
 
-            const buyButton = document.getElementById('buybuttons');
+            const buyButtons = document.getElementsByClassName('cart__ctas');
+            const buyButton = buyButtons[0];
             buyButton.style.display = 'none'; // 初期状態で非表示
 
             const observer = new MutationObserver(mutations => {
