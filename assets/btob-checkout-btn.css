@@ -1,0 +1,126 @@
+.form-container {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+.form-group {
+  margin-bottom: 1rem;
+}
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #666;
+}
+input[type="date"],
+select {
+  width: 100%;
+  max-width: 100% !important;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1.2rem;
+}
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1.5rem;
+  width: 100%;
+  letter-spacing: 2px;
+  transition: background-color 0.3s ease;
+  font-weight: bold;
+  background: blue;
+}
+.btob-help-msg {
+}
+.btob-help-msg span {
+  display: inline-block;
+  font-size: 1.2rem;
+  color: red;
+  background: #f7e3e3;
+  padding: 0.5rem;
+  border-radius: 4px;
+}
+
+.btob-help-msg a {
+  display: inline-block;
+  margin: 1.2rem 0;
+  text-align: center;
+  width: 100%;
+  font-size: 1.5rem;
+}
+
+.default-address {
+  font-family: Arial, sans-serif;
+  max-width: 400px;
+  margin: 0.4rem auto;
+  padding: 1rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  font-size: 1.2rem;
+}
+.default-address h2 {
+  color: #333;
+  border-bottom: 2px solid #4a4a4a;
+  padding: 0.3rem 0;
+  font-size: 1.5rem;
+}
+.default-address p {
+  margin: 0.3rem 0;
+  line-height: 1.5;
+}
+.default-address .name {
+  font-weight: bold;
+  font-size: 1.1em;
+}
+.default-address .company {
+  font-style: italic;
+  color: #666;
+}
+.default-address .contact {
+  margin-top: 15px;
+  padding-top: 10px;
+  border-top: 1px solid #e0e0e0;
+}
+.no-address {
+  text-align: center;
+  color: #666;
+  font-style: italic;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+.spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: spin 1s ease-in-out infinite;
+  margin-right: 10px;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+/* ボタンのスタイル */
+.btn:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+ship-co-delivery-selector {
+  display: none;
+}

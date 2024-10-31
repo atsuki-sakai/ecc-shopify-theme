@@ -1,0 +1,60 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "image_banner_JXQDE7": {
+      "type": "image-banner",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/dd43dca82aeecf95bee1af8cfc2edc8f.jpg",
+        "image_overlay_opacity": 0,
+        "image_height": "small",
+        "desktop_content_position": "middle-center",
+        "show_text_box": true,
+        "desktop_content_alignment": "center",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
+    "ht_register_kXPTiW": {
+      "type": "ht-register",
+      "settings": {
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "desc": "ELARA100 トーニングシートマスクの商品レビュー投稿者様限定プレゼントキャンペーン！以下の項目に記入してシートマスクを受け取りましょう。",
+        "step-1": "",
+        "step-2": "",
+        "step-3": "",
+        "confirm": "上記の情報で同時にアカウント作成する。",
+        "submit": "送信する"
+      }
+    },
+    "banner_xhp3y6": {
+      "type": "banner",
+      "settings": {
+        "title": "",
+        "subtitle": "",
+        "link": "\/account\/login",
+        "sp-banner-jp": "shopify:\/\/shop_images\/ECC.png",
+        "pc-banner-jp": "shopify:\/\/shop_images\/ECC.png",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_banner_JXQDE7",
+    "ht_register_kXPTiW",
+    "banner_xhp3y6"
+  ]
+}

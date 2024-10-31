@@ -1,0 +1,620 @@
+{{ 'component-cart.css' | asset_url | stylesheet_tag }}
+{{ 'component-totals.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+{{ 'component-discounts.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div
+  class="gradient color-{{ section.settings.color_scheme }}{% if cart == empty %} is-empty{% endif %}"
+  id="main-cart-footer"
+  data-id="{{ section.id }}"
+>
+  <div class="page-width">
+    <div class="cart__footer isolate section-{{ section.id }}-padding">
+      {%- if settings.show_cart_note -%}
+        <cart-note class="cart__note field">
+          <label for="Cart-note">{{ 'sections.cart.note' | t }}</label>
+          <textarea
+            class="text-area field__input"
+            name="note"
+            form="cart"
+            id="Cart-note"
+            placeholder="{{ 'sections.cart.note' | t }}"
+          >{{ cart.note }}</textarea>
+        </cart-note>
+      {%- endif -%}
+
+      <div class="cart__blocks">
+        {% for block in section.blocks %}
+          {%- case block.type -%}
+            {%- when '@app' -%}
+              {% render block %}
+            {%- when 'subtotal' -%}
+              <div class="js-contents" {{ block.shopify_attributes }}>
+                <div>
+                  {%- if cart.cart_level_discount_applications.size > 0 -%}
+                    <ul class="discounts list-unstyled" role="list" aria-label="{{ 'customer.order.discount' | t }}">
+                      {%- for discount in cart.cart_level_discount_applications -%}
+                        <li class="discounts__discount discounts__discount--position">
+                          {%- render 'icon-discount' -%}
+                          {{ discount.title }}
+                          (-{{ discount.total_allocated_amount | money }})
+                        </li>
+                      {%- endfor -%}
+                    </ul>
+                  {%- endif -%}
+                </div>
+
+                <div class="totals">
+                  <h2 class="totals__total">{{ 'sections.cart.estimated_total' | t }}</h2>
+                  <p class="totals__total-value">{{ cart.total_price | money_with_currency }}</p>
+                </div>
+
+                <small class="tax-note caption-large rte">
+                  {%- if cart.taxes_included and shop.shipping_policy.body != blank -%}
+                    {{ 'sections.cart.taxes_included_and_shipping_policy_html' | t: link: shop.shipping_policy.url }}
+                  {%- elsif cart.taxes_included -%}
+                    {{ 'sections.cart.taxes_included_but_shipping_at_checkout' | t }}
+                  {%- elsif shop.shipping_policy.body != blank -%}
+                    {{ 'sections.cart.taxes_and_shipping_policy_at_checkout_html' | t: link: shop.shipping_policy.url }}
+                  {%- else -%}
+                    {{ 'sections.cart.taxes_and_shipping_at_checkout' | t }}
+                  {%- endif -%}
+                </small>
+              </div>
+            {% when 'free_shipping' %}
+              {% unless customer %}
+                <style>
+                  #shipping-message {
+                    display:none
+                    background-color: #ffffff;
+                    padding: 10px;
+                    text-align: center;
+                    font-size: 1.6rem;
+                    font-weight: bold;
+                    color: #333;
+                    margin-top: 20px;
+                    border-top: solid red;
+                    border-bottom: solid red;
+                    color: red;
+                    letter-spacing: 1px;
+                  }
+                </style>
+                <script type="text/javascript" src="{{  'free-shipping-msg.js' | asset_url }}" defer></script>
+                <script>
+                  const waitSec = 2000;
+                  const borderPrice = {{ section.settings.border_price }};
+
+                  async function showShippingFreeMsg(waitSec) {
+                    const cart = {{ cart | json }};
+                    if (cart.items.length < 1) {
+                      return;
+                    }
+
+                    function getCurrencyCode() {
+                      return {{ cart.currency.iso_code | json }};
+                    }
+
+                    const exchangeRates = shouldFetchNewData() ? await fetchExchangeRates() : JSON.parse(localStorage.getItem('exchangeRates'));
+                    const isoCode = getCurrencyCode();
+                    const baseRate = getExchangeRate(exchangeRates, isoCode);
+
+                    if (!exchangeRates || !baseRate) {
+                      console.log("Could not retrieve exchange rates or base rate.");
+                      return;
+                    }
+
+                    setTimeout(function() {
+                      quantityListener();
+
+                      const freeShippingThreshold = calculateFreeShippingThreshold(baseRate, borderPrice);
+                      const totalValueElement = document.querySelector('.totals__total-value');
+                      const totalValueText = totalValueElement.innerText;
+                      const totalValueNumber = parseFloat(totalValueText.replace(/[^0-9.-]+/g, ""));
+                      const cartTotal = totalValueNumber;
+                      const amountUntilFreeShipping = calculateAmountUntilFreeShipping(freeShippingThreshold, cartTotal);
+                      displayShippingMessage(amountUntilFreeShipping, {{ cart.currency.symbol | json }}, {{ section.settings.for_free_text | json }}, {{ section.settings.free_text | json }});
+                    }, waitSec);
+                  }
+
+                  document.addEventListener('DOMContentLoaded', function() {
+                    showShippingFreeMsg(waitSec);
+                  });
+                </script>
+                <div id="shipping-message"></div>
+              {% endunless %}
+            {%- else -%}
+              <!-- 卸販売用の購入ボタンを生成 -->
+              <!-- 配送指定は一旦停止 -->
+              {% if cart.item_count > 0
+                and customer.tags contains 'ウェルシアコクミン'
+                or customer.tags contains 'ウノプリール'
+                or customer.tags contains '取引先・既存代理店'
+              %}
+                {{ 'btob-checkout-btn.css' | asset_url | stylesheet_tag }}
+                <script type="text/javascript" src="{{ "btob-checkout-btn.js" | asset_url}}" defer></script>
+                <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                    // const deliveryDateInput = document.getElementById('delivery_date');
+                    // // 初期設定
+                    // updateMinDate(deliveryDateInput);
+
+                    // 日付が変更されたときの処理
+                //     deliveryDateInput.addEventListener('change', function() {
+                //     const selectedDate = new Date(this.value);
+                //     const minDate = new Date(getMinDeliveryDate());
+
+                //     if (selectedDate < minDate) {
+                //         alert('最短で本日から3日後から指定可能です。');
+                //         this.value = getMinDeliveryDate();
+                //     }
+                // });
+
+                    // sumi-wholesalesの要素の生成をチェックする
+                    function checkElement() {
+                      const priceElement = document.querySelector('.samitaWS-customized-price');
+                      if (priceElement) {
+                        // すべての価格要素を取得
+                        const priceElements = document.querySelectorAll('.samitaWS-customized-price');
+
+                        // 各価格要素の親要素からvariantIdを取得し、オブジェクトに格納
+                        const variantIds = [];
+
+                        priceElements.forEach(priceElement => {
+                            // 親要素を取得
+                            const parentElement = priceElement.closest('[samitaws-variant-id]');
+
+                            // 親要素が存在する場合のみ処理を行う
+                            if (parentElement) {
+                                const variantId = parentElement.getAttribute('samitaws-variant-id');
+                                const price = priceElement.textContent.trim().replace(/[^\d]/g, ''); // ¥やカンマを除去して数値のみ取得
+
+                                // 重複チェック
+                                if (!variantIds.some(item => item.variantId === variantId && item.price === price)) {
+                                    variantIds.push({
+                                        variantId: variantId,
+                                        price: parseFloat(price)
+                                    });
+                                }
+                            }
+                        });
+
+                       document.getElementById('checkout').addEventListener('click', function(e) {
+
+                          e.preventDefault();
+                          setLoadingState(true);
+
+                          // var deliveryDate = document.getElementById('delivery_date').value;
+                          // var deliveryTime = document.getElementById('delivery_time').value;
+
+                          // カートの情報を取得
+                          var cartInfo = {{ cart | json }};
+
+                         console.log({{ customer.email | json}})
+
+
+                         // カスタムノートを作成
+                          var customNote = `\n会社名: {{ customer.default_address.company }},\n顧客名: {{ customer.default_address.name }},\n電話番号: {{ customer.default_address.phone }},\nメールアドレス: {{ customer.email }},\n 郵便番号: {{ customer.default_address.zip }}, \n 都道府県: {{ customer.default_address.province }},\n市: {{ customer.default_address.city }}, \n住所1: {{ customer.default_address.address1 }}, \n住所2: {{ customer.default_address.address2 }}`;
+                        
+                          // 配達情報を追加
+                          // var deliveryInfo = `配達希望日: ${deliveryDate}\n配達希望時間: ${deliveryTime}`;
+                            var deliveryInfo = ``;
+                        
+                          // 最終的なノートを作成
+                          var finalNote = `${customNote}\n\n${deliveryInfo}`.trim();
+                                                 
+                          var orderData = {
+                            customer: {
+                              id: {{ customer.id | json }},
+                              email: {{ customer.email | json }},
+                              first_name: {{ customer.first_name | json }},
+                              last_name: {{ customer.last_name | json }},
+                              default_address: {{ customer.default_address | json }}
+                            },
+                            line_items: cartInfo.items,
+                            // delivery_date: deliveryDate,
+                            // delivery_time: deliveryTime,
+                            total_price: (cartInfo.total_price || 0).toString(),
+                            currency: cartInfo.currency,
+                            shipping_address: {{ customer.default_address | json }},
+                            billing_address: {{ customer.default_address | json }}, 
+                            note: finalNote
+                          };
+
+
+
+
+                            // 価格を修正
+                            orderData.line_items = adjustPrices(orderData.line_items, variantIds);
+                             createBtobOrder(orderData);
+                          });
+                        } else {
+                          // 要素が見つからない場合、再度チェックする
+                          setTimeout(checkElement, 500); // 500msごとにチェックを繰り返す
+                        }
+                      }
+                      // 最初のチェックを開始
+                      checkElement();
+                    });
+                </script>
+
+                <div>
+                  {% if customer.default_address %}
+                    <div class="default-address">
+                      <h2>配送先のご住所</h2>
+                      <p class="name">
+                        {{ customer.default_address.first_name }}
+                        {{ customer.default_address.last_name }}
+                      </p>
+                      {% if customer.default_address.company != blank %}
+                        <p class="company">{{ customer.default_address.company }}</p>
+                      {% endif %}
+                      <p>{{ customer.default_address.address1 }}</p>
+                      {% if customer.default_address.address2 != blank %}
+                        <p>{{ customer.default_address.address2 }}</p>
+                      {% endif %}
+                      <p>{{ customer.default_address.city }}, {{ customer.default_address.province }}</p>
+                      <p>{{ customer.default_address.country }}</p>
+                      <p>{{ customer.default_address.zip }}</p>
+                      <p class="contact">{{ customer.default_address.phone }}</p>
+                    </div>
+                  {% else %}
+                    <p class="no-address">デフォルトの住所が設定されていません。</p>
+                  {% endif %}
+                </div>
+                <div class="form-container">
+                  <form id="delivery-form">
+                    <input type="hidden" id="customer_id" value="{{ customer.id }}">
+                    <!--
+                      <div class="form-group">
+                        <label for="delivery_date">配送希望日:</label>
+                        <input type="date" id="delivery_date" required>
+                      </div>
+                      <div class="form-group">
+                        <label for="delivery_time">配送希望時間:</label>
+                        <select id="delivery_time"  required>
+                          <option value="">選択してください</option>
+                          <option value="morning">午前中</option>
+                          <option value="14-16">14時-16時</option>
+                          <option value="16-18">16時-18時</option>
+                          <option value="18-20">18時-20時</option>
+                          <option value="19-21">19時-21時</option>
+                        </select>
+                      </div>
+                    -->
+                    <div class="btob-help-msg">
+                      <span> 配送先に指定したいご住所をデフォルトに設定してご注文下さい。 </span>
+                      <a href="https://ecc-wellness.com/account/addresses">こちらから配送住所を変更可能です。</a>
+                    </div>
+                    <button type="button" id="checkout" class="btn">
+                      <span class="spinner" style="display: none;"></span>
+                      <span class="button-text">請求書払いで注文</span>
+                    </button>
+                  </form>
+                </div>
+              {% endif %}
+
+              {% assign flag = false %}
+              {% if cart.item_count > 0
+                and customer.tags contains 'ウェルシアコクミン'
+                or customer.tags contains 'ウノプリール'
+                or customer.tags contains '取引先・既存代理店'
+              %}
+                {% assign flag = true %}
+              {% endif %}
+
+              <style>
+                .custom-cart-section {
+                  width: 100%;
+                  margin: 0 auto;
+                  font-size: 1.6rem;
+                  padding: 2rem 0;
+                }
+                .custom-cart-header__title {
+                      margin-top: 3rem;
+                      margin-bottom: 1rem;
+                      font-size: 2rem;
+                      line-height: 1.2;
+                      color: #2c3e50;
+                      width: fit-content;
+                      letter-spacing: 2px;
+                      font-weight: bold;
+                }
+                .custom-cart-header__text {
+                  font-size: 1.4rem;
+                  line-height: 1.6;
+                  color: #34495e;
+                  margin-bottom: 2rem;
+                }
+                .custom-cart-section__inner {
+                  width: 100%;
+                  display: flex;
+                  flex-direction: column;
+                  gap: 2rem;
+                }
+                .custom-cart-section__inner-item {
+                  width: 100%;
+
+                }
+                .custom-cart-section__inner-item h3 {
+                  display: block;
+                  color: #2c3e50;
+                  margin-bottom: 1rem;
+                  font-size: 2rem;
+                }
+
+                .cbtn {
+                  font-size: 1.5rem;
+                  display: block;
+                  padding: 1rem 3rem;
+                  border-radius: 6px;
+                  font-weight: 600;
+                  transition: all 0.3s ease;
+                  width: fit-content;
+                }
+                .cbtn-main {
+                  background-color: blue;
+                  color: white;
+                  border: none;
+                }
+                .cbtn-main:hover {
+                  background-color: #bdc3c7;
+                }
+                .cbtn-primary {
+                  background-color: gray;
+                  color: white;
+                  border: none;
+                }
+                .cbtn-primary:hover {
+                  background-color: #2980b9;
+                }
+                .cbtn-secondary {
+                  width: fit-content;
+                  background-color: green;
+                  color: white;
+                }
+                .cbtn-secondary:hover {
+                  background-color: #bdc3c7;
+                }
+
+                .c-helptext {
+                  margin: 1.4rem 0;
+                  font-size: 1.4rem;
+                  color: gray;
+                  display: inline-block;
+                  line-height: 2rem;
+                }
+              </style>
+
+              <div class="custom-cart-section">
+                <div class="custom-cart-header">
+                  <p class="custom-cart-header__text">
+                    {{ section.settings['header-desc'] }}
+                  </p>
+                  <h4 class="custom-cart-header__title">{{ section.settings['purchase-text'] }}</h4>
+                </div>
+                <div class="custom-cart-section__inner">
+                  <div class="custom-cart-section__inner-item">
+                    {% if customer %}
+                      <h5 style="font-weight: bold; color: green; background: white; border: solid 1px green; border-radius: 999px; text-align: center; padding: 1rem 0;">
+                        {{ section.settings.logged -}}
+                      </h5>
+                    {% else %}
+                      <h3>{{ section.settings['member-customer'] }}</h3>
+                      <div class="mt-3">
+                        <a href="{{ routes.account_login_url }}?redirect_to=checkout" class="cbtn cbtn-main">
+                          {{- section.settings['login-text'] -}}
+                        </a>
+                        <p class="c-helptext">{{ section.settings['login-desc'] }}</p>
+                      </div>
+                    {% endif %}
+                  </div>
+                  {% unless customer %}
+                    <div class="custom-cart-section__inner-item">
+                      <h3>{{ section.settings['register-text'] }}</h3>
+                      <a href="{{ routes.account_register_url }}?redirect_to=checkout" class="cbtn cbtn-secondary">
+                        {{- section.settings['membership-text'] -}}
+                      </a>
+                      <span class="c-helptext">{{ section.settings['membership-desc'] }}</span>
+                    </div>
+                  {% endunless %}
+                </div>
+              </div>
+
+              <div
+                style="{% if flag %}display: none; {% else %}{% endif %}"
+                class="cart__ctas"
+                {{ block.shopify_attributes }}
+              >
+                <button
+                  style="{% if flag %}display: none; {% else %}{% endif %}"
+                  type="submit"
+                  id="checkout"
+                  class="cart__checkout-button button"
+                  name="checkout"
+                  {% if cart == empty %}
+                    disabled
+                  {% endif %}
+                  form="cart"
+                >
+                  {{ 'sections.cart.checkout' | t }}
+                </button>
+              </div>
+
+              {%- if additional_checkout_buttons -%}
+                <div
+                  style="{% if flag %}display: none; {% else %}{% endif %}"
+                  class="cart__dynamic-checkout-buttons additional-checkout-buttons"
+                >
+                  {{ content_for_additional_checkout_buttons }}
+                </div>
+              {%- endif -%}
+          {%- endcase -%}
+        {% endfor %}
+
+        <div id="cart-errors"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.main-cart-footer.name",
+  "class": "cart__footer-wrapper",
+  "settings": [
+    {
+      "type": "html",
+      "id": "header-desc",
+      "label": "カスタムフッターディスクリプション",
+      "default": "<p>発送の遅延について多くのご注文を頂いており、順次発送を進めていますが、発送スケジュールに遅れが生じており、配達までお時間を頂いております。ご不便をおかけしますが、ご理解賜りますようお願い申し上げます。ご注文内容が決まりましたら、購入手続きへお進みください。送料と手数料は、配送先住所と支払方法を入力後の確認画面でご確認ください。</p>"
+    },
+    {
+      "type": "text",
+      "id": "purchase-text",
+      "label": "購入手続き",
+      "default": "購入手続き"
+    },
+    {
+      "type": "text",
+      "id": "member-customer",
+      "label": "会員のお客様",
+      "default": "会員のお客様"
+    },
+    {
+      "type": "text",
+      "id": "logged",
+      "label": "ログイン中テキスト",
+      "default": "ログイン中です"
+    },
+    {
+      "type": "text",
+      "id": "checkout",
+      "label": "チェックアウト",
+      "default": "チェックアウト"
+    },
+    {
+      "type": "text",
+      "id": "login-desc",
+      "label": "ログイン説明",
+      "default": "既に会員登録されている方は、こちらからログインできます。"
+    },
+    {
+      "type": "text",
+      "id": "login-text",
+      "label": "ログイン",
+      "default": "ログイン"
+    },
+    {
+      "type": "text",
+      "id": "register-text",
+      "label": "登録説明",
+      "default": "会員登録されていないお客様"
+    },
+    {
+      "type": "text",
+      "id": "membership-text",
+      "label": "会員登録",
+      "default": "会員登録を行う"
+    },
+    {
+      "type": "text",
+      "id": "or-text",
+      "label": "または",
+      "default": "または"
+    },
+    {
+      "type": "text",
+      "id": "not-membership-checkout-text",
+      "label": "非会員チェックアウト説明",
+      "default": "会員登録せずにチェックアウトする"
+    },
+    {
+      "type": "text",
+      "id": "membership-desc",
+      "label": "会員登録説明",
+      "default": "会員登録を行うと、配送先住所などの情報を自動的に入力でき、便利にお買い物いただけます。"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+        "type": "range",
+        "id": "border_price",
+        "default": 2000,
+        "min": 50,
+        "max": 5000,
+        "step": 50,
+        "unit": "0円",
+        "label": "FreeShippingPrice"
+      },
+       {
+        "type": "text",
+        "id": "for_free_text",
+        "default": "送料無料まであと",
+        "label": "送料無料まであと〜"
+      },{
+           "type": "text",
+        "id": "free_text",
+        "default": "送料無料！",
+        "label": "送料無料"
+      },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 40
+    }
+  ],
+  "blocks": [
+    {
+      "type": "subtotal",
+      "name": "t:sections.main-cart-footer.blocks.subtotal.name",
+      "limit": 1
+    },
+    {
+      "type": "buttons",
+      "name": "t:sections.main-cart-footer.blocks.buttons.name",
+      "limit": 1
+    },
+    {
+      "type": "free_shipping",
+      "name": "送料無料",
+      "limit": 1
+    },
+    {
+      "type": "@app"
+    }
+  ]
+}
+{% endschema %}
