@@ -1,21 +1,8 @@
-<!-- Swiperのスタイルとスクリプト読み込み -->
-<link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/swiper@11.0.5/swiper-bundle.min.css"
-  integrity="sha256-aULwhztqcQjhipg7QZKtRpARqBMTF/iBYdbwkXBY2iI="
-  crossorigin="anonymous"
->
-<script
-  src="https://cdn.jsdelivr.net/npm/swiper@11.0.5/swiper-bundle.min.js"
-  integrity="sha256-aULwhztqcQjhipg7QZKtRpARqBMTF/iBYdbwkXBY2iI="
-  crossorigin="anonymous"
-></script>
-
 <div class="color-{{ section.settings.color_scheme }} gradient">
   <div class="campaign-features section-{{ section.id }}-padding">
     <div class="campaign-features__inner">
       <!-- Swiper コンテナ -->
-      <div class="swiper-container">
+      <div class="swiper-container-2">
         <div class="swiper-wrapper">
           {% for block in section.blocks %}
             <div class="swiper-slide">
@@ -65,7 +52,7 @@
           {% endfor %}
         </div>
         <!-- Swiperのページネーション -->
-        <div class="swiper-pagination"></div>
+        <div class="swiper-pagination-2"></div>
       </div>
     </div>
   </div>
@@ -74,7 +61,7 @@
 <!-- Swiperのスクリプト設定 -->
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    var swiper = new Swiper('.swiper-container', {
+    var swiper = new Swiper('.swiper-container-2', {
       slidesPerView: 3,
       spaceBetween: 20,
       loop: true,
@@ -83,7 +70,7 @@
         disableOnInteraction: false,
       },
       pagination: {
-        el: '.swiper-pagination',
+        el: '.swiper-pagination-2',
         clickable: true,
       },
       breakpoints: {
