@@ -497,7 +497,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // previousValueが存在しない場合、ボタンを表示
             if (previousValue === "false") {
-                buyButton.innerText = {{ 'sections.cart.checkout' | t }};
+                buyButton.innerText = {{ 'sections.cart.checkout' | t | json }};
               
                 return;
             }
@@ -509,7 +509,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         if (newValue !== previousValue) {
                             console.log('samitaws-cart-subtotal-priceが変更されました！');
                             previousValue = newValue; // 新しい値を保存
-                            buyButton.innerText = {{ 'sections.cart.checkout' | t }};
+                            buyButton.innerText = {{ 'sections.cart.checkout' | t | json }};
                         }
                     }
                 });
