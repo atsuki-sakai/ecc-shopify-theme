@@ -478,7 +478,6 @@
   </div>
 </div>
 
-
 <script>
 document.addEventListener('DOMContentLoaded', () => {
     const checkForElement = () => {
@@ -487,16 +486,17 @@ document.addEventListener('DOMContentLoaded', () => {
         if (targetElement) {
             const buyButtons = document.getElementsByClassName('cart__ctas');
             const buyButton = buyButtons[0];
-          
+
             console.log('要素が見つかりました:', targetElement);
             let previousValue = targetElement.getAttribute('samitaws-cart-subtotal-price');
-            console.log('初期値:', previousValue);
-            if(!previousValue) {
-               buyButton.style.display = 'block';
-              return;
+            console.log('初期値:', typeof previousValue);
+
+            // previousValueが存在しない場合、ボタンを表示
+            if (!previousValue) {
+                buyButton.style.display = 'block';
+                return;
             }
 
-           
             const observer = new MutationObserver(mutations => {
                 mutations.forEach(mutation => {
                     if (mutation.type === 'attributes' && mutation.attributeName === 'samitaws-cart-subtotal-price') {
@@ -504,7 +504,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         if (newValue !== previousValue) {
                             console.log('samitaws-cart-subtotal-priceが変更されました！');
                             previousValue = newValue; // 新しい値を保存
-                            buyButton.style.display = 'block';
+                            buyButton.style.display = 'block'; // ボタンを表示
                         }
                     }
                 });
@@ -529,6 +529,7 @@ document.addEventListener('DOMContentLoaded', () => {
     checkForElement(); // 初回呼び出し
 });
 </script>
+
 
 {% schema %}
 {
