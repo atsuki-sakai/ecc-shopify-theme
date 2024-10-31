@@ -489,6 +489,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         buyButton.innerText = "読み込み中...";
         buyButton.style.pointerEvents = "none";
+        buyButton.style.cursor = "not-allowed";
         
         if (targetElement) {
         
@@ -500,6 +501,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (previousValue === "false") {
                 buyButton.innerText = {{ 'sections.cart.checkout' | t | json }};
                 buyButton.style.pointerEvents = "auto";
+                buyButton.style.cursor = "auto";
                 return;
             }
 
@@ -512,6 +514,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             previousValue = newValue; // 新しい値を保存
                             buyButton.innerText = {{ 'sections.cart.checkout' | t | json }};
                             buyButton.style.pointerEvents = "auto";
+                          buyButton.style.cursor = "auto";
                         }
                     }
                 });
