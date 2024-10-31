@@ -218,7 +218,7 @@
         "padding_bottom": 36,
         "products": "recomend-products",
         "description": "<p>ECC選りすぐりの成分配合の<br>健康食品・化粧品</p>",
-        "backround_color_str": "#FFE6D1,#FFE6E6,#D1E9F6,#FFFBE6,#E6F7D1,#E6E1FF",
+        "backround_color_str": "#D1E9F6,#FFE6E6,#FFE6D1,#FFFBE6,#E6F7D1,#E6E1FF",
         "accent_color": "#fb8637"
       }
     },
