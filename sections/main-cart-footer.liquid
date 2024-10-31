@@ -459,8 +459,11 @@
               </div>
 
               {%- if additional_checkout_buttons -%}
-                <div
+                {%  comment %}
                   style="{% if flag %}display: none; {% else %}{% endif %}"
+                {% endcomment %}
+                <div
+                  style="display: none;"
                   class="cart__dynamic-checkout-buttons additional-checkout-buttons"
                 >
                   {{ content_for_additional_checkout_buttons }}
@@ -488,6 +491,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const buyButtons = document.getElementsByClassName('cart__ctas');
             const buyButton = buyButtons[0];
+
+            const additionalCheckoutButtons = document.getElementsByClassName('additional-checkout-buttons');
+            const additionalBuyButton = additionalCheckoutButtons[0];
            
             const observer = new MutationObserver(mutations => {
                 mutations.forEach(mutation => {
@@ -499,6 +505,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                             // ボタンを表示
                             buyButton.style.display = 'block';
+                            additionalBuyButton.style.display = "block";
                         }
                     }
                 });
