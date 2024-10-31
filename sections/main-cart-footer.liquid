@@ -471,6 +471,8 @@
     </div>
   </div>
 </div>
+<!-- 例: buybuttonsボタンの追加 -->
+<button id="buybuttons" style="display: none;">購入する</button>
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
@@ -482,13 +484,19 @@ document.addEventListener('DOMContentLoaded', () => {
             let previousValue = targetElement.getAttribute('samitaws-cart-subtotal-price');
             console.log('初期値:', previousValue);
 
+            const buyButton = document.getElementById('buybuttons');
+            buyButton.style.display = 'none'; // 初期状態で非表示
+
             const observer = new MutationObserver(mutations => {
                 mutations.forEach(mutation => {
                     if (mutation.type === 'attributes' && mutation.attributeName === 'samitaws-cart-subtotal-price') {
                         const newValue = targetElement.getAttribute('samitaws-cart-subtotal-price');
                         if (newValue !== previousValue) {
-                            alert('samitaws-cart-subtotal-priceが変更されました！');
+                            console.log('samitaws-cart-subtotal-priceが変更されました！');
                             previousValue = newValue; // 新しい値を保存
+
+                            // ボタンを表示
+                            buyButton.style.display = 'block';
                         }
                     }
                 });
@@ -496,6 +504,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
             observer.observe(targetElement, {
                 attributes: true // 属性の変更を監視
+            });
+
+            // ボタンがクリックされたときの処理
+            buyButton.addEventListener('click', () => {
+                // 購入処理をここに追加
+                console.log('購入ボタンがクリックされました');
+                // 例: 購入処理を実行する関数を呼び出す
             });
         } else {
             console.error('指定された要素が見つかりません');
@@ -505,7 +520,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     checkForElement(); // 初回呼び出し
 });
-
 </script>
 
 {% schema %}
