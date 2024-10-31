@@ -475,6 +475,7 @@
 <script>
 
   document.addEventListener('DOMContentLoaded', () => {
+    console.log('start')
     // 監視対象の要素を取得
     const targetElement = document.querySelector('[samitaws-cart-subtotal-price]');
     
@@ -504,6 +505,7 @@
             }
         });
     });
+    console.log('watch')
 
     // 監視を開始
     observer.observe(targetElement, {
