@@ -436,7 +436,7 @@
               </div>
 
               <div
-                style="{% if flag %}display: none; {% else %}{% endif %}"
+                style="{% if flag %}display: none; {% else %}{% endif %} display: none;"
                 class="cart__ctas"
                 {{ block.shopify_attributes }}
               >
@@ -485,8 +485,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const buyButtons = document.getElementsByClassName('cart__ctas');
             const buyButton = buyButtons[0];
-            buyButton.style.display = 'none'; // 初期状態で非表示
-
+           
             const observer = new MutationObserver(mutations => {
                 mutations.forEach(mutation => {
                     if (mutation.type === 'attributes' && mutation.attributeName === 'samitaws-cart-subtotal-price') {
