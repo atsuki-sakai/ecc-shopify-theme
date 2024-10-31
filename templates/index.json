@@ -408,10 +408,20 @@
           "type": "review",
           "settings": {
             "customer_avator": "shopify://shop_images/1_a219b840-8d46-41ab-8ae4-c12be0df872d.png",
-            "product": "高濃度ブラジル産グリーンプロポリス抽出液30ml",
+            "product": "elara100-トーニングシートマスク",
             "customer_name": "Chika 様",
             "rating": 5,
             "review": "<p><strong>次の朝にびっくり♪</strong></p><p>このELARA100トーニングシートマスクはまず取り出しやすいです。そして広げやすい！<br/>顔に乗せると小鼻までカバーして密着してくれます♪<br/>3分とありますがあっという間で、もう少し貼っていたい気持ちを抑えて時間通りに外しました。<br/>次の朝、お肌プルプルで毛穴が目立たなくなり、何よりまぶたのこじわがなくなってる！<br/>目元ギリギリのシートのおかげです♡<br/>すごい保湿力だと思いました♪</p><p>Hidden</p>"
+          }
+        },
+        "review_wRK7Hc": {
+          "type": "review",
+          "settings": {
+            "customer_avator": "shopify://shop_images/1_a219b840-8d46-41ab-8ae4-c12be0df872d.png",
+            "product": "",
+            "customer_name": "Koba様",
+            "rating": 5,
+            "review": "<p><strong>もっちりしっとり</strong></p><p>剥がしたあとの肌はしっとりもっちりつやつやで乾燥小じわが目立たなくなっていました。翌朝の肌もすべすべしていて感動でした。<br/>7つのフリー処方も嬉しいですね。水光肌を目指して続けてみたいと思います。</p>"
           }
         },
         "review_fQXnw4": {
@@ -429,6 +439,7 @@
         "review_MNYhPm",
         "review_8bQJNR",
         "review_CkEYqK",
+        "review_wRK7Hc",
         "review_fQXnw4"
       ],
       "settings": {
