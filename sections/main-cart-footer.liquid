@@ -473,23 +473,30 @@
 </div>
 
 <script>
- document.addEventListener('DOMContentLoaded', () => {
+
+  document.addEventListener('DOMContentLoaded', () => {
     // 監視対象の要素を取得
     const targetElement = document.querySelector('[samitaws-cart-subtotal-price]');
     
+    // 要素が見つかるか確認
     if (!targetElement) {
         console.error('指定された要素が見つかりません');
         return;
+    } else {
+        console.log('要素が見つかりました:', targetElement);
     }
 
     // 初期値を保存
     let previousValue = targetElement.getAttribute('samitaws-cart-subtotal-price');
+    console.log('初期値:', previousValue);
 
     // MutationObserverの設定
     const observer = new MutationObserver(mutations => {
         mutations.forEach(mutation => {
+            console.log('変更が検出されました:', mutation);
             if (mutation.type === 'attributes' && mutation.attributeName === 'samitaws-cart-subtotal-price') {
                 const newValue = targetElement.getAttribute('samitaws-cart-subtotal-price');
+                console.log('新しい値:', newValue);
                 if (newValue !== previousValue) {
                     alert('samitaws-cart-subtotal-priceが変更されました！');
                     previousValue = newValue; // 新しい値を保存
