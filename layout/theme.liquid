@@ -297,6 +297,8 @@ body {
   }
 }
     {% endstyle %}
+    <script src="https://cdn.jsdelivr.net/gh/ezekielaquino/marquee3000@0.1.3/dist/marquee3k.min.js" defer></script>
+
 
     {{ 'base.css' | asset_url | stylesheet_tag }}
     {{ 'tailwind.css' | asset_url | stylesheet_tag }}
@@ -421,7 +423,6 @@ body {
         countrySelectorSearchCount: `{{ 'localization.country_results_count' | t: count: '[count]' }}`,
       };
     </script>
-
     {%- if settings.predictive_search_enabled -%}
       <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}

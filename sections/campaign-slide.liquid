@@ -113,7 +113,7 @@
         {% for block in section.blocks limit:3 %}
           <a {% if block.settings.link != blank %}
             href="{{ block.settings.link }}"
-          {% endif %} class="campaign-feature__item">
+          {% endif %} class="campaign-feature__item tw-transition-all tw-duration-500 hover:tw-translate-y-[-4px]">
             {% if block.settings['image-jp'] %}
               <img class="campaign-feature__img" src="{{ block.settings.image-jp | image_url: width: 1000 }}" alt="{{ block.settings.description | strip_html }}" width="1000" height="675" loading="lazy">
             {% else %}
