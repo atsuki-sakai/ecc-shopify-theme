@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -31,7 +40,7 @@
         "text_MFtXWB"
       ],
       "settings": {
-        "image": "shopify:\/\/shop_images\/30183430_m.jpg",
+        "image": "shopify://shop_images/30183430_m.jpg",
         "image_overlay_opacity": 30,
         "image_height": "small",
         "desktop_content_position": "middle-center",
@@ -50,7 +59,7 @@
         "heading_tVcfyw": {
           "type": "heading",
           "settings": {
-            "heading": "<strong>カスタマーサービスセンター<\/strong>",
+            "heading": "<strong>カスタマーサービスセンター</strong>",
             "heading_size": "h2"
           }
         }
@@ -73,14 +82,14 @@
         "heading_9EiLB3": {
           "type": "heading",
           "settings": {
-            "heading": "<strong>0120-144-270<\/strong>",
+            "heading": "<strong>0120-144-270</strong>",
             "heading_size": "h0"
           }
         },
         "text_Cgctpq": {
           "type": "text",
           "settings": {
-            "text": "<p><em>受付時間 ： 平日10：00～18：00 <br\/>※土日祝、年末年始を除く<\/em><\/p>"
+            "text": "<p><em>受付時間 ： 平日10：00～18：00 <br/>※土日祝、年末年始を除く</em></p>"
           }
         }
       },
@@ -169,40 +178,6 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
-    },
-    "newsletter_QaTNRa": {
-      "type": "newsletter",
-      "blocks": {
-        "heading_QQkBGH": {
-          "type": "heading",
-          "settings": {
-            "heading": "メルマガ会員になってお得な情報を手に入れませんか？",
-            "heading_size": "h2"
-          }
-        },
-        "paragraph_fmcLPD": {
-          "type": "paragraph",
-          "settings": {
-            "text": "<p>新商品や会員限定の情報をいち早くお届けします。<\/p>"
-          }
-        },
-        "email_form_6pRBtf": {
-          "type": "email_form",
-          "settings": {
-          }
-        }
-      },
-      "block_order": [
-        "heading_QQkBGH",
-        "paragraph_fmcLPD",
-        "email_form_6pRBtf"
-      ],
-      "settings": {
-        "color_scheme": "scheme-1",
-        "full_width": false,
-        "padding_top": 40,
-        "padding_bottom": 52
-      }
     }
   },
   "order": [
@@ -210,7 +185,6 @@
     "image_banner_gydjap",
     "rich_text_Qq3wnd",
     "rich_text_LjDfMX",
-    "original_form_Ph3Ebx",
-    "newsletter_QaTNRa"
+    "original_form_Ph3Ebx"
   ]
 }
