@@ -28,11 +28,11 @@
           "type": "img_slide",
           "settings": {
             "link": "shopify://products/elara-50g",
-            "pc_img_slide-jp": "shopify://shop_images/main-banner-2-jp.png",
+            "pc_img_slide-jp": "shopify://shop_images/main-banner-2-jp_965deaec-2863-46ee-afb9-c829395f542b.png",
             "sp_img_slide-jp": "shopify://shop_images/main-banner-sp-1-jp.png",
-            "pc_img_slide-en": "shopify://shop_images/main-banner-2-en.png",
+            "pc_img_slide-en": "shopify://shop_images/main-banner-2-en_079d6bab-7ae8-467e-90a6-460632461568.png",
             "sp_img_slide-en": "shopify://shop_images/main-banner-sp-1-en.png",
-            "pc_img_slide-zh": "shopify://shop_images/main-banner-2-jp.png",
+            "pc_img_slide-zh": "shopify://shop_images/main-banner-2-jp_965deaec-2863-46ee-afb9-c829395f542b.png",
             "sp_img_slide-zh": "shopify://shop_images/main-banner-sp-1-jp.png"
           }
         },
