@@ -473,18 +473,24 @@
 </div>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function() {
-    console.log('hello')
-  });
+    document.addEventListener("DOMContentLoaded", function() {
+      console.log('hello')
+    });
 
+    document.addEventListener("samitaWSRenderWholesaleCompleted", function() {
+      console.log("Samita Wholesaleアプリの処理が完了しました");
+      // 処理完了後に実行したいコードをここに記述
+    });
+
+    document.addEventListener("samitaWS.scripts.loaded", function() {
+        console.log("Samita Wholesaleのスクリプトがロードされました");
+        // スクリプトロード完了後の処理を記述
+    });
+
+    // Samita Wholesaleアプリの処理完了を検知
   document.addEventListener("samitaWSRenderWholesaleCompleted", function() {
-    console.log("Samita Wholesaleアプリの処理が完了しました");
-    // 処理完了後に実行したいコードをここに記述
-  });
-
-  document.addEventListener("samitaWS.scripts.loaded", function() {
-      console.log("Samita Wholesaleのスクリプトがロードされました");
-      // スクリプトロード完了後の処理を記述
+      console.log("Samita Wholesaleアプリの処理が完了しました");
+      // 処理完了後に実行したいコードをここに記述
   });
 </script>
 
