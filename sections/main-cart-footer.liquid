@@ -439,7 +439,7 @@
                style="{% if flag %}display: none; {% else %}{% endif %} display"
              {% endcomment %}
               <div
-                style="display:none;"
+                style="{% if flag %}display: none; {% else %}{% endif %} display"
                 class="cart__ctas"
                 {{ block.shopify_attributes }}
               >
@@ -480,20 +480,23 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
+  
     const checkForElement = () => {
         const targetElement = document.querySelector('[samitaws-cart-subtotal-price]');
+      
+        const buyButtons = document.getElementsByClassName('cart__ctas');
+        const buyButton = buyButtons[0].firstElementChild; 
         
         if (targetElement) {
-            const buyButtons = document.getElementsByClassName('cart__ctas');
-            const buyButton = buyButtons[0];
-
+        
             console.log('要素が見つかりました:', targetElement);
             let previousValue = targetElement.getAttribute('samitaws-cart-subtotal-price');
             console.log('初期値:', typeof previousValue);
 
             // previousValueが存在しない場合、ボタンを表示
             if (previousValue === "false") {
-                buyButton.style.display = 'block';
+                buyButton.;
+              
                 return;
             }
 
