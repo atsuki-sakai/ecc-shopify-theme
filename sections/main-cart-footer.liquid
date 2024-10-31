@@ -473,28 +473,35 @@
 </div>
 
 <script>
-   // 監視対象の要素を取得
-const targetElement = document.querySelector('[samitaws-cart-subtotal-price]');
+ document.addEventListener('DOMContentLoaded', () => {
+    // 監視対象の要素を取得
+    const targetElement = document.querySelector('[samitaws-cart-subtotal-price]');
+    
+    if (!targetElement) {
+        console.error('指定された要素が見つかりません');
+        return;
+    }
 
-// 初期値を保存
-let previousValue = targetElement.getAttribute('samitaws-cart-subtotal-price');
+    // 初期値を保存
+    let previousValue = targetElement.getAttribute('samitaws-cart-subtotal-price');
 
-// MutationObserverの設定
-const observer = new MutationObserver(mutations => {
-    mutations.forEach(mutation => {
-        if (mutation.type === 'attributes' && mutation.attributeName === 'samitaws-cart-subtotal-price') {
-            const newValue = targetElement.getAttribute('samitaws-cart-subtotal-price');
-            if (newValue !== previousValue) {
-                alert('samitaws-cart-subtotal-priceが変更されました！');
-                previousValue = newValue; // 新しい値を保存
+    // MutationObserverの設定
+    const observer = new MutationObserver(mutations => {
+        mutations.forEach(mutation => {
+            if (mutation.type === 'attributes' && mutation.attributeName === 'samitaws-cart-subtotal-price') {
+                const newValue = targetElement.getAttribute('samitaws-cart-subtotal-price');
+                if (newValue !== previousValue) {
+                    alert('samitaws-cart-subtotal-priceが変更されました！');
+                    previousValue = newValue; // 新しい値を保存
+                }
             }
-        }
+        });
     });
-});
 
-// 監視を開始
-observer.observe(targetElement, {
-    attributes: true // 属性の変更を監視
+    // 監視を開始
+    observer.observe(targetElement, {
+        attributes: true // 属性の変更を監視
+    });
 });
 
 </script>
