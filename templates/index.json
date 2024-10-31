@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "image_link_slider_Kt6nQ7": {
@@ -6,37 +15,37 @@
         "img_slide_yjVBRq": {
           "type": "img_slide",
           "settings": {
-            "link": "shopify:\/\/products\/elara100-トーニングシートマスク",
-            "pc_img_slide-jp": "shopify:\/\/shop_images\/main-banner-jp.jpg",
-            "sp_img_slide-jp": "shopify:\/\/shop_images\/main-banner-sp-jp_03eb0390-9bdb-4424-9363-fc04585d46c9.png",
-            "pc_img_slide-en": "shopify:\/\/shop_images\/main-banner-jp.jpg",
-            "sp_img_slide-en": "shopify:\/\/shop_images\/main-banner-sp-jp_03eb0390-9bdb-4424-9363-fc04585d46c9.png",
-            "pc_img_slide-zh": "shopify:\/\/shop_images\/main-banner-jp.jpg",
-            "sp_img_slide-zh": "shopify:\/\/shop_images\/main-banner-sp-jp_03eb0390-9bdb-4424-9363-fc04585d46c9.png"
+            "link": "shopify://products/elara100-トーニングシートマスク",
+            "pc_img_slide-jp": "shopify://shop_images/main-banner-jp.jpg",
+            "sp_img_slide-jp": "shopify://shop_images/main-banner-sp-jp_03eb0390-9bdb-4424-9363-fc04585d46c9.png",
+            "pc_img_slide-en": "shopify://shop_images/main-banner-jp.jpg",
+            "sp_img_slide-en": "shopify://shop_images/main-banner-sp-jp_03eb0390-9bdb-4424-9363-fc04585d46c9.png",
+            "pc_img_slide-zh": "shopify://shop_images/main-banner-jp.jpg",
+            "sp_img_slide-zh": "shopify://shop_images/main-banner-sp-jp_03eb0390-9bdb-4424-9363-fc04585d46c9.png"
           }
         },
         "img_slide_3JXdm3": {
           "type": "img_slide",
           "settings": {
-            "link": "shopify:\/\/products\/elara-50g",
-            "pc_img_slide-jp": "shopify:\/\/shop_images\/main-banner-2-jp.png",
-            "sp_img_slide-jp": "shopify:\/\/shop_images\/main-banner-sp-1-jp.png",
-            "pc_img_slide-en": "shopify:\/\/shop_images\/main-banner-2-en.png",
-            "sp_img_slide-en": "shopify:\/\/shop_images\/main-banner-sp-1-en.png",
-            "pc_img_slide-zh": "shopify:\/\/shop_images\/main-banner-2-jp.png",
-            "sp_img_slide-zh": "shopify:\/\/shop_images\/main-banner-sp-1-jp.png"
+            "link": "shopify://products/elara-50g",
+            "pc_img_slide-jp": "shopify://shop_images/main-banner-2-jp.png",
+            "sp_img_slide-jp": "shopify://shop_images/main-banner-sp-1-jp.png",
+            "pc_img_slide-en": "shopify://shop_images/main-banner-2-en.png",
+            "sp_img_slide-en": "shopify://shop_images/main-banner-sp-1-en.png",
+            "pc_img_slide-zh": "shopify://shop_images/main-banner-2-jp.png",
+            "sp_img_slide-zh": "shopify://shop_images/main-banner-sp-1-jp.png"
           }
         },
         "img_slide_MGqCaU": {
           "type": "img_slide",
           "settings": {
-            "link": "shopify:\/\/products\/p-ec80",
-            "pc_img_slide-jp": "shopify:\/\/shop_images\/main-banner-3-jp.png",
-            "sp_img_slide-jp": "shopify:\/\/shop_images\/main-banner-sp-3-jp.png",
-            "pc_img_slide-en": "shopify:\/\/shop_images\/main-banner-3-en.png",
-            "sp_img_slide-en": "shopify:\/\/shop_images\/main-banner-sp-3-en.png",
-            "pc_img_slide-zh": "shopify:\/\/shop_images\/main-banner-3-jp.png",
-            "sp_img_slide-zh": "shopify:\/\/shop_images\/main-banner-sp-3-jp.png"
+            "link": "shopify://products/p-ec80",
+            "pc_img_slide-jp": "shopify://shop_images/main-banner-3-jp.png",
+            "sp_img_slide-jp": "shopify://shop_images/main-banner-sp-3-jp.png",
+            "pc_img_slide-en": "shopify://shop_images/main-banner-3-en.png",
+            "sp_img_slide-en": "shopify://shop_images/main-banner-sp-3-en.png",
+            "pc_img_slide-zh": "shopify://shop_images/main-banner-3-jp.png",
+            "sp_img_slide-zh": "shopify://shop_images/main-banner-sp-3-jp.png"
           }
         }
       },
@@ -46,7 +55,8 @@
         "img_slide_MGqCaU"
       ],
       "settings": {
-        "line_color": "#fea1a1"
+        "bg_img": "shopify://shop_images/top-bg.png",
+        "line_color": "#fb8637"
       }
     },
     "marquee_rLXeEC": {
@@ -55,49 +65,49 @@
         "image_9P4THF": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/1_a219b840-8d46-41ab-8ae4-c12be0df872d.png",
+            "image": "shopify://shop_images/1_a219b840-8d46-41ab-8ae4-c12be0df872d.png",
             "image_width": 100
           }
         },
         "image_iNkhNN": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/15.png",
+            "image": "shopify://shop_images/15.png",
             "image_width": 100
           }
         },
         "image_mtiCk3": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/9.png",
+            "image": "shopify://shop_images/9.png",
             "image_width": 100
           }
         },
         "image_Bac7yA": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/1_a219b840-8d46-41ab-8ae4-c12be0df872d.png",
+            "image": "shopify://shop_images/1_a219b840-8d46-41ab-8ae4-c12be0df872d.png",
             "image_width": 100
           }
         },
         "image_C9W3p9": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/2_5af4c170-af6c-49c6-8139-d1c4ec620c67.png",
+            "image": "shopify://shop_images/2_5af4c170-af6c-49c6-8139-d1c4ec620c67.png",
             "image_width": 100
           }
         },
         "image_bcDbjH": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/dr-namba-maintake_800_x_800_px_1.png",
+            "image": "shopify://shop_images/dr-namba-maintake_800_x_800_px_1.png",
             "image_width": 100
           }
         },
         "image_VNq3a8": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/1_6b34a234-eca7-4840-98c6-8be5ac7161aa.png",
+            "image": "shopify://shop_images/1_6b34a234-eca7-4840-98c6-8be5ac7161aa.png",
             "image_width": 100
           }
         }
@@ -116,11 +126,7 @@
         "text_color": "#000000",
         "padding_vertical": 10,
         "padding_horizontal": 0,
-        "speed": 60,
-        "gap": 60,
-        "font_size": 48,
-        "pause_on_hover": true,
-        "reverse": false
+        "pause_on_hover": true
       }
     },
     "campaign_slide_gMkCn9": {
@@ -129,34 +135,34 @@
         "feature_mV4PXG": {
           "type": "feature",
           "settings": {
-            "image-jp": "shopify:\/\/shop_images\/campaign-1_e1e3ec5d-46c3-49f0-823e-edbb8a79df17.png",
-            "link": "shopify:\/\/products\/elara100-トーニングシートマスク",
+            "image-jp": "shopify://shop_images/campaign-1_e1e3ec5d-46c3-49f0-823e-edbb8a79df17.png",
+            "link": "shopify://products/elara100-トーニングシートマスク",
             "tags": "新発売,水光肌",
             "colors": "#FF4545,#BFECFF",
             "description": "ECCが長年研究を続けるエラスチンを配合したシートマスクが新発売！",
-            "postdate": "2024\/10\/29 (火曜日)"
+            "postdate": "2024/10/29 (火曜日)"
           }
         },
         "feature_W6cQBt": {
           "type": "feature",
           "settings": {
-            "image-jp": "shopify:\/\/shop_images\/campaign-2_78846f69-dd69-4e6c-812b-d4d64c9c45c6.png",
-            "link": "shopify:\/\/products\/elara-50g-subscription",
+            "image-jp": "shopify://shop_images/campaign-2_78846f69-dd69-4e6c-812b-d4d64c9c45c6.png",
+            "link": "shopify://products/elara-50g-subscription",
             "tags": "10%OFF,定期便",
             "colors": "#FF9800,#5755FE",
             "description": "お得なELARA100の定期便",
-            "postdate": "2024\/08\/7 (水曜日)"
+            "postdate": "2024/08/7 (水曜日)"
           }
         },
         "feature_pRkqnn": {
           "type": "feature",
           "settings": {
-            "image-jp": "shopify:\/\/shop_images\/campaign-3.png",
-            "link": "shopify:\/\/products\/p-ec80",
+            "image-jp": "shopify://shop_images/campaign-3.png",
+            "link": "shopify://products/p-ec80",
             "tags": "シミ対策,ビタミン",
             "colors": "#8CB9BD,#F5DD61",
             "description": "美肌をキープ！飲むシミ対策！",
-            "postdate": "2024\/08\/7 (水曜日)"
+            "postdate": "2024/08/7 (水曜日)"
           }
         }
       },
@@ -168,7 +174,7 @@
       "settings": {
         "heading": "キャンペーン・特集",
         "subheading": "CAMPAIGN",
-        "viewmore": "shopify:\/\/collections",
+        "viewmore": "shopify://collections",
         "color_scheme": "",
         "padding_top": 48,
         "padding_bottom": 48
@@ -180,23 +186,23 @@
         "image_banner_Wt7rJR": {
           "type": "image-banner",
           "settings": {
-            "pc_banner_image-jp": "shopify:\/\/shop_images\/lp-banner.jpg",
-            "sp_banner_image-jp": "shopify:\/\/shop_images\/lp-banner.jpg",
-            "pc_banner_image-en": "shopify:\/\/shop_images\/lp-banner.jpg",
-            "sp_banner_image-en": "shopify:\/\/shop_images\/lp-banner.jpg",
-            "pc_banner_image-zh": "shopify:\/\/shop_images\/lp-banner.jpg",
-            "sp_banner_image-zh": "shopify:\/\/shop_images\/lp-banner.jpg",
-            "zh-banner_link": "shopify:\/\/products\/elara100-トーニングシートマスク"
+            "pc_banner_image-jp": "shopify://shop_images/lp-banner.jpg",
+            "sp_banner_image-jp": "shopify://shop_images/lp-banner.jpg",
+            "pc_banner_image-en": "shopify://shop_images/lp-banner.jpg",
+            "sp_banner_image-en": "shopify://shop_images/lp-banner.jpg",
+            "pc_banner_image-zh": "shopify://shop_images/lp-banner.jpg",
+            "sp_banner_image-zh": "shopify://shop_images/lp-banner.jpg",
+            "zh-banner_link": "shopify://products/elara100-トーニングシートマスク"
           }
         },
         "image_banner_Etma4T": {
           "type": "image-banner",
           "settings": {
-            "pc_banner_image-jp": "shopify:\/\/shop_images\/elara_banner_pc_0baadd63-b81b-485f-b841-e0e77a291cd9.jpg",
-            "sp_banner_image-jp": "shopify:\/\/shop_images\/elara_banner_pc_0baadd63-b81b-485f-b841-e0e77a291cd9.jpg",
-            "pc_banner_image-en": "shopify:\/\/shop_images\/pec_banner_pc.jpg",
-            "sp_banner_image-en": "shopify:\/\/shop_images\/pec_banner_pc.jpg",
-            "zh-banner_link": "shopify:\/\/products\/飲むコラーゲンp-ec80-30包入"
+            "pc_banner_image-jp": "shopify://shop_images/elara_banner_pc_0baadd63-b81b-485f-b841-e0e77a291cd9.jpg",
+            "sp_banner_image-jp": "shopify://shop_images/elara_banner_pc_0baadd63-b81b-485f-b841-e0e77a291cd9.jpg",
+            "pc_banner_image-en": "shopify://shop_images/pec_banner_pc.jpg",
+            "sp_banner_image-en": "shopify://shop_images/pec_banner_pc.jpg",
+            "zh-banner_link": "shopify://products/飲むコラーゲンp-ec80-30包入"
           }
         }
       },
@@ -211,7 +217,7 @@
         "padding_top": 36,
         "padding_bottom": 36,
         "products": "recomend-products",
-        "description": "<p>ECC選りすぐりの成分配合の<br>健康食品・化粧品<\/p>",
+        "description": "<p>ECC選りすぐりの成分配合の<br>健康食品・化粧品</p>",
         "backround_color_str": "#FFE6D1,#FFE6E6,#D1E9F6,#FFFBE6,#E6F7D1,#E6E1FF",
         "accent_color": "#fb8637"
       }
@@ -243,9 +249,9 @@
         "heading": "",
         "heading_size": "h2",
         "enable_video_looping": false,
-        "video": "shopify:\/\/files\/videos\/ELARA100_PR6.mp4",
+        "video": "shopify://files/videos/ELARA100_PR6.mp4",
         "video_url": "",
-        "cover_image": "shopify:\/\/shop_images\/2024-06-15_23.42.59.png",
+        "cover_image": "shopify://shop_images/2024-06-15_23.42.59.png",
         "description": "",
         "full_width": false,
         "color_scheme": "",
@@ -261,7 +267,7 @@
           "settings": {
             "title": "グリーンプロポリス",
             "product": "green-propolis",
-            "image": "shopify:\/\/shop_images\/page-2_25e1c70c-49dc-4082-944b-9714bcd7f504.jpg"
+            "image": "shopify://shop_images/page-2_25e1c70c-49dc-4082-944b-9714bcd7f504.jpg"
           }
         },
         "products_view_NzeMVA": {
@@ -269,7 +275,7 @@
           "settings": {
             "title": "特許製法エラスチン ELARA100",
             "product": "elara-50g",
-            "image": "shopify:\/\/shop_images\/page-4.jpg"
+            "image": "shopify://shop_images/page-4.jpg"
           }
         },
         "products_view_E4HVjC": {
@@ -277,7 +283,7 @@
           "settings": {
             "title": "ドクター・ナンバマイタケ",
             "product": "dr-namba-maitake",
-            "image": "shopify:\/\/shop_images\/dr-namba-maintake.png"
+            "image": "shopify://shop_images/dr-namba-maintake.png"
           }
         }
       },
@@ -289,7 +295,7 @@
       "settings": {
         "title": "PICKUP",
         "subtitle": "ピクアップ商品",
-        "floating_img": "shopify:\/\/shop_images\/1200_x_600_px_900_x_600_px_2.png",
+        "floating_img": "shopify://shop_images/1200_x_600_px_900_x_600_px_2.png",
         "color_scheme": "scheme-2",
         "padding_top": 36,
         "padding_bottom": 36
@@ -300,13 +306,13 @@
       "settings": {
         "title": "アンバサダー会員募集",
         "subtitle": "ブランドの価値を体現し、その魅力を世界に伝えられる、情熱あふれるあなたを求めています。",
-        "link": "shopify:\/\/pages\/contact",
-        "sp-banner-jp": "shopify:\/\/shop_images\/banner-amb.png",
-        "pc-banner-jp": "shopify:\/\/shop_images\/banner-amb.png",
-        "sp-banner-en": "shopify:\/\/shop_images\/banner-amb.png",
-        "pc-banner-en": "shopify:\/\/shop_images\/banner-amb.png",
-        "sp-banner-zh": "shopify:\/\/shop_images\/banner-amb.png",
-        "pc-banner-zh": "shopify:\/\/shop_images\/banner-amb.png",
+        "link": "shopify://pages/contact",
+        "sp-banner-jp": "shopify://shop_images/banner-amb.png",
+        "pc-banner-jp": "shopify://shop_images/banner-amb.png",
+        "sp-banner-en": "shopify://shop_images/banner-amb.png",
+        "pc-banner-en": "shopify://shop_images/banner-amb.png",
+        "sp-banner-zh": "shopify://shop_images/banner-amb.png",
+        "pc-banner-zh": "shopify://shop_images/banner-amb.png",
         "color_scheme": "",
         "padding_top": 36,
         "padding_bottom": 0
@@ -318,12 +324,12 @@
         "title": "Beauty Inside Out",
         "subtitle": "健康的で内側から輝く美しさの秘訣を知りませんか？",
         "link": "",
-        "sp-banner-jp": "shopify:\/\/shop_images\/banner-column.png",
-        "pc-banner-jp": "shopify:\/\/shop_images\/banner-column.png",
-        "sp-banner-en": "shopify:\/\/shop_images\/banner-column.png",
-        "pc-banner-en": "shopify:\/\/shop_images\/banner-column.png",
-        "sp-banner-zh": "shopify:\/\/shop_images\/banner-column.png",
-        "pc-banner-zh": "shopify:\/\/shop_images\/banner-column.png",
+        "sp-banner-jp": "shopify://shop_images/banner-column.png",
+        "pc-banner-jp": "shopify://shop_images/banner-column.png",
+        "sp-banner-en": "shopify://shop_images/banner-column.png",
+        "pc-banner-en": "shopify://shop_images/banner-column.png",
+        "sp-banner-zh": "shopify://shop_images/banner-column.png",
+        "pc-banner-zh": "shopify://shop_images/banner-column.png",
         "color_scheme": "",
         "padding_top": 36,
         "padding_bottom": 36
@@ -334,13 +340,13 @@
       "settings": {
         "title": "",
         "subtitle": "",
-        "link": "https:\/\/www.instagram.com\/ecc_wellness\/",
-        "sp-banner-jp": "shopify:\/\/shop_images\/banner-sns-insta.png",
-        "pc-banner-jp": "shopify:\/\/shop_images\/banner-sns-insta.png",
-        "sp-banner-en": "shopify:\/\/shop_images\/banner-sns-insta.png",
-        "pc-banner-en": "shopify:\/\/shop_images\/banner-sns-insta.png",
-        "sp-banner-zh": "shopify:\/\/shop_images\/banner-sns-insta.png",
-        "pc-banner-zh": "shopify:\/\/shop_images\/banner-sns-insta.png",
+        "link": "https://www.instagram.com/ecc_wellness/",
+        "sp-banner-jp": "shopify://shop_images/banner-sns-insta.png",
+        "pc-banner-jp": "shopify://shop_images/banner-sns-insta.png",
+        "sp-banner-en": "shopify://shop_images/banner-sns-insta.png",
+        "pc-banner-en": "shopify://shop_images/banner-sns-insta.png",
+        "sp-banner-zh": "shopify://shop_images/banner-sns-insta.png",
+        "pc-banner-zh": "shopify://shop_images/banner-sns-insta.png",
         "color_scheme": "",
         "padding_top": 36,
         "padding_bottom": 36
@@ -363,13 +369,13 @@
       "settings": {
         "title": "忙しいあなたに3分で水光肌へ",
         "subtitle": "ELARA100 - トーニングシートマスク 7枚入り",
-        "link": "shopify:\/\/products\/elara100-トーニングシートマスク",
-        "sp-banner-jp": "shopify:\/\/shop_images\/ELARA100-banner_b4b1d77e-1c72-47a7-82be-8584833915d3.jpg",
-        "pc-banner-jp": "shopify:\/\/shop_images\/ELARA100-banner_b4b1d77e-1c72-47a7-82be-8584833915d3.jpg",
-        "sp-banner-en": "shopify:\/\/shop_images\/ELARA100-banner_b4b1d77e-1c72-47a7-82be-8584833915d3.jpg",
-        "pc-banner-en": "shopify:\/\/shop_images\/ELARA100-banner_b4b1d77e-1c72-47a7-82be-8584833915d3.jpg",
-        "sp-banner-zh": "shopify:\/\/shop_images\/ELARA100-banner_b4b1d77e-1c72-47a7-82be-8584833915d3.jpg",
-        "pc-banner-zh": "shopify:\/\/shop_images\/ELARA100-banner_b4b1d77e-1c72-47a7-82be-8584833915d3.jpg",
+        "link": "shopify://products/elara100-トーニングシートマスク",
+        "sp-banner-jp": "shopify://shop_images/ELARA100-banner_b4b1d77e-1c72-47a7-82be-8584833915d3.jpg",
+        "pc-banner-jp": "shopify://shop_images/ELARA100-banner_b4b1d77e-1c72-47a7-82be-8584833915d3.jpg",
+        "sp-banner-en": "shopify://shop_images/ELARA100-banner_b4b1d77e-1c72-47a7-82be-8584833915d3.jpg",
+        "pc-banner-en": "shopify://shop_images/ELARA100-banner_b4b1d77e-1c72-47a7-82be-8584833915d3.jpg",
+        "sp-banner-zh": "shopify://shop_images/ELARA100-banner_b4b1d77e-1c72-47a7-82be-8584833915d3.jpg",
+        "pc-banner-zh": "shopify://shop_images/ELARA100-banner_b4b1d77e-1c72-47a7-82be-8584833915d3.jpg",
         "color_scheme": "",
         "padding_top": 36,
         "padding_bottom": 36
@@ -381,41 +387,41 @@
         "review_8bQJNR": {
           "type": "review",
           "settings": {
-            "customer_avator": "shopify:\/\/shop_images\/800x800px_1_5c2afe7e-e3c6-4813-8043-c8763f7bbe89.png",
+            "customer_avator": "shopify://shop_images/800x800px_1_5c2afe7e-e3c6-4813-8043-c8763f7bbe89.png",
             "product": "elara-50g",
             "customer_name": "２a 様",
             "rating": 4,
-            "review": "<p>初回半額なので試してみました。テクスチャーが気に入ってて、高いけど他には何もいらないしトラブルもないので続けてます<\/p>"
+            "review": "<p>初回半額なので試してみました。テクスチャーが気に入ってて、高いけど他には何もいらないしトラブルもないので続けてます</p>"
           }
         },
         "review_MNYhPm": {
           "type": "review",
           "settings": {
-            "customer_avator": "shopify:\/\/shop_images\/800x800px_3_5184020f-60df-4bc8-b7b8-6222b15a3f9e.png",
+            "customer_avator": "shopify://shop_images/800x800px_3_5184020f-60df-4bc8-b7b8-6222b15a3f9e.png",
             "product": "グリーンプロポリス-ソフトカプセル90粒",
             "customer_name": "U★ 様",
             "rating": 4,
-            "review": "<p>良かったので友達にプレゼントしました!<\/p>"
+            "review": "<p>良かったので友達にプレゼントしました!</p>"
           }
         },
         "review_CkEYqK": {
           "type": "review",
           "settings": {
-            "customer_avator": "shopify:\/\/shop_images\/800x800px_5.png",
+            "customer_avator": "shopify://shop_images/800x800px_5.png",
             "product": "高濃度ブラジル産グリーンプロポリス抽出液30ml",
             "customer_name": "S 様",
             "rating": 5,
-            "review": "<p>疲れにくくなりました。<\/p>"
+            "review": "<p>疲れにくくなりました。</p>"
           }
         },
         "review_fQXnw4": {
           "type": "review",
           "settings": {
-            "customer_avator": "shopify:\/\/shop_images\/800x800px_5.png",
+            "customer_avator": "shopify://shop_images/800x800px_5.png",
             "product": "高濃度ブラジル産グリーンプロポリス抽出液30ml",
             "customer_name": "K.J. 様",
             "rating": 5,
-            "review": "<p>コロナ中も元気に過ごせました。<\/p>"
+            "review": "<p>コロナ中も元気に過ごせました。</p>"
           }
         }
       },
