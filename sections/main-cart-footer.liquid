@@ -473,44 +473,37 @@
 </div>
 
 <script>
+document.addEventListener('DOMContentLoaded', () => {
+    const checkForElement = () => {
+        const targetElement = document.querySelector('[samitaws-cart-subtotal-price]');
+        
+        if (targetElement) {
+            console.log('要素が見つかりました:', targetElement);
+            let previousValue = targetElement.getAttribute('samitaws-cart-subtotal-price');
+            console.log('初期値:', previousValue);
 
-  document.addEventListener('DOMContentLoaded', () => {
-    console.log('start')
-    // 監視対象の要素を取得
-    const targetElement = document.querySelector('[samitaws-cart-subtotal-price]');
-    
-    // 要素が見つかるか確認
-    if (!targetElement) {
-        console.error('指定された要素が見つかりません');
-        return;
-    } else {
-        console.log('要素が見つかりました:', targetElement);
-    }
+            const observer = new MutationObserver(mutations => {
+                mutations.forEach(mutation => {
+                    if (mutation.type === 'attributes' && mutation.attributeName === 'samitaws-cart-subtotal-price') {
+                        const newValue = targetElement.getAttribute('samitaws-cart-subtotal-price');
+                        if (newValue !== previousValue) {
+                            alert('samitaws-cart-subtotal-priceが変更されました！');
+                            previousValue = newValue; // 新しい値を保存
+                        }
+                    }
+                });
+            });
 
-    // 初期値を保存
-    let previousValue = targetElement.getAttribute('samitaws-cart-subtotal-price');
-    console.log('初期値:', previousValue);
+            observer.observe(targetElement, {
+                attributes: true // 属性の変更を監視
+            });
+        } else {
+            console.error('指定された要素が見つかりません');
+            setTimeout(checkForElement, 1000); // 1秒後に再チェック
+        }
+    };
 
-    // MutationObserverの設定
-    const observer = new MutationObserver(mutations => {
-        mutations.forEach(mutation => {
-            console.log('変更が検出されました:', mutation);
-            if (mutation.type === 'attributes' && mutation.attributeName === 'samitaws-cart-subtotal-price') {
-                const newValue = targetElement.getAttribute('samitaws-cart-subtotal-price');
-                console.log('新しい値:', newValue);
-                if (newValue !== previousValue) {
-                    alert('samitaws-cart-subtotal-priceが変更されました！');
-                    previousValue = newValue; // 新しい値を保存
-                }
-            }
-        });
-    });
-    console.log('watch')
-
-    // 監視を開始
-    observer.observe(targetElement, {
-        attributes: true // 属性の変更を監視
-    });
+    checkForElement(); // 初回呼び出し
 });
 
 </script>
