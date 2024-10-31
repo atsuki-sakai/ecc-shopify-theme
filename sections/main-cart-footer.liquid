@@ -485,15 +485,17 @@ document.addEventListener('DOMContentLoaded', () => {
         const targetElement = document.querySelector('[samitaws-cart-subtotal-price]');
         
         if (targetElement) {
+            const buyButtons = document.getElementsByClassName('cart__ctas');
+            const buyButton = buyButtons[0];
+          
             console.log('要素が見つかりました:', targetElement);
             let previousValue = targetElement.getAttribute('samitaws-cart-subtotal-price');
             console.log('初期値:', previousValue);
+            if(previousValue) {
+               buyButton.style.display = 'block';
+              return;
+            }
 
-            const buyButtons = document.getElementsByClassName('cart__ctas');
-            const buyButton = buyButtons[0];
-
-            const additionalCheckoutButtons = document.getElementsByClassName('dynamic-checkout__content');
-            const additionalBuyButton = additionalCheckoutButtons[0];
            
             const observer = new MutationObserver(mutations => {
                 mutations.forEach(mutation => {
@@ -502,10 +504,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         if (newValue !== previousValue) {
                             console.log('samitaws-cart-subtotal-priceが変更されました！');
                             previousValue = newValue; // 新しい値を保存
-
-                            // ボタンを表示
                             buyButton.style.display = 'block';
-                            additionalBuyButton.style.display = "block";
                         }
                     }
                 });
