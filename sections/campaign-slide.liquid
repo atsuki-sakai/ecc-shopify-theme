@@ -23,7 +23,7 @@
     color: inherit;
     width: 100%;
   }
-  
+
   .campaign-feature__img {
     width: 100%;
     height: auto;
@@ -104,40 +104,94 @@
     }
   }
 {% endstyle %}
-
 <div class="color-{{ section.settings.color_scheme }} gradient">
   <div class="campaign-features section-{{ section.id }}-padding">
     <div class="campaign-features__inner">
-    
-      <div class="campaign-features__grid">
-        {% for block in section.blocks limit:3 %}
-          <a {% if block.settings.link != blank %}
-            href="{{ block.settings.link }}"
-          {% endif %} class="campaign-feature__item tw-transition-all tw-duration-500 hover:tw-translate-y-[-4px]">
-            {% if block.settings['image-jp'] %}
-              <img class="campaign-feature__img" src="{{ block.settings.image-jp | image_url: width: 1000 }}" alt="{{ block.settings.description | strip_html }}" width="1000" height="675" loading="lazy">
-            {% else %}
-              <img class="campaign-feature__img" src="https://via.placeholder.com/400x225" alt="Placeholder" width="400" height="225" loading="lazy">
-            {% endif %}
-            <div class="campaign-feature__content">
-              <div class="campaign-feature__tags">
-                {% assign tags = block.settings.tags | split: ',' %}
-                {% assign colors = block.settings.colors | split: ',' %}
-                {% for tag in tags %}
-                  <span class="campaign-feature__tag" style="background-color: {{ colors[forloop.index0] | default: '#000' }};">
-                    {{ tag | strip }}
-                  </span>
-                {% endfor %}
-              </div>
-              <p class="campaign-feature__desc">{{ block.settings.description | strip_html }}</p>
-              <span class="campaign-feature__date">{{ block.settings.postdate }}</span>
+      <!-- Swiper コンテナ -->
+      <div class="swiper-container campaign-features__grid">
+        <div class="swiper-wrapper">
+          {% for block in section.blocks limit: 3 %}
+            <div class="swiper-slide">
+              <a
+                {% if block.settings.link != blank %}
+                  href="{{ block.settings.link }}"
+                {% endif %}
+                class="campaign-feature__item tw-transition-all tw-duration-500 hover:tw-translate-y-[-4px]"
+              >
+                {% if block.settings['image-jp'] %}
+                  <img
+                    class="campaign-feature__img"
+                    src="{{ block.settings.image-jp | image_url: width: 1000 }}"
+                    alt="{{ block.settings.description | strip_html }}"
+                    width="1000"
+                    height="675"
+                    loading="lazy"
+                  >
+                {% else %}
+                  <img
+                    class="campaign-feature__img"
+                    src="https://via.placeholder.com/400x225"
+                    alt="Placeholder"
+                    width="400"
+                    height="225"
+                    loading="lazy"
+                  >
+                {% endif %}
+                <div class="campaign-feature__content">
+                  <div class="campaign-feature__tags">
+                    {% assign tags = block.settings.tags | split: ',' %}
+                    {% assign colors = block.settings.colors | split: ',' %}
+                    {% for tag in tags %}
+                      <span
+                        class="campaign-feature__tag"
+                        style="background-color: {{ colors[forloop.index0] | default: '#000' }};"
+                      >
+                        {{ tag | strip }}
+                      </span>
+                    {% endfor %}
+                  </div>
+                  <p class="campaign-feature__desc">{{ block.settings.description | strip_html }}</p>
+                  <span class="campaign-feature__date">{{ block.settings.postdate }}</span>
+                </div>
+              </a>
             </div>
-          </a>
-        {% endfor %}
+          {% endfor %}
+        </div>
+        <!-- Swiper のページネーションとナビゲーションボタン -->
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
       </div>
     </div>
   </div>
 </div>
+
+<script>
+  var swiper = new Swiper('.swiper-container', {
+    slidesPerView: 3,
+    spaceBetween: 20,
+    loop: true,
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    breakpoints: {
+      // スマートフォン向けに調整
+      768: {
+        slidesPerView: 1,
+        spaceBetween: 10
+      }
+    }
+  });
+</script>
 
 {% schema %}
 {
