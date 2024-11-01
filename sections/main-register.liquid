@@ -254,7 +254,7 @@
   </div>
   <div id="redirect-register" class="s-content redirect-register" style="display: none;">
     {%- form 'create_customer', novalidate: 'novalidate' -%}
-      <input type="hidden" name="checkout_url" value="/checkout">
+      <input type="hidden" name="checkout_url" value="/cart">
       {%- if form.errors -%}
         <h2
           class="form__message"
