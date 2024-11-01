@@ -34,12 +34,11 @@ const tagMapping = {
 
 function toggleCodeInputVisibility() {
   console.log('toggleCodeInputVisibilit')
-  ecc-affiliate-checkbox__redirect
-
-  let checkbox;
   const param = getURLParameter();
-  checkbox = document.getElementById('ecc-affiliate-checkbox');
-  if(param === "checkout") {
+  let checkbox = document.getElementById('ecc-affiliate-checkbox');
+  
+  // URLパラメータが "checkout" の場合、別のチェックボックスを選択
+  if (param === "checkout") {
     checkbox = document.getElementById('ecc-affiliate-checkbox__redirect');
   }
   const codeInputContainer = document.getElementById('code-input-container');
