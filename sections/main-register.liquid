@@ -1,5 +1,5 @@
 {{ 'customer.css' | asset_url | stylesheet_tag }}
-<script type="text/javascript" src="{{ 'custom-register-logic.js' | asset_url }}" ></script>
+<script type="text/javascript" src="{{ 'custom-register-logic.js' | asset_url }}" defer></script>
 <script>
   function getURLParameter() {
     const urlParams = new URLSearchParams(window.location.search);
