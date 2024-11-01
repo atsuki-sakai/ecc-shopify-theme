@@ -36,11 +36,14 @@ function toggleCodeInputVisibility() {
   console.log('toggleCodeInputVisibilit')
   const param = getURLParameter();
   let checkbox = document.getElementById('ecc-affiliate-checkbox');
+
   
   // URLパラメータが "checkout" の場合、別のチェックボックスを選択
   if (param === "checkout") {
     checkbox = document.getElementById('ecc-affiliate-checkbox__redirect');
   }
+
+  console.log(params)
   const codeInputContainer = document.getElementById('code-input-container');
   
   if (checkbox && codeInputContainer) {
