@@ -1,5 +1,78 @@
 {{ 'customer.css' | asset_url | stylesheet_tag }}
-<script>
+
+<style>
+  .code-help {
+    font-size: 11px;
+    margin-top: 2rem;
+    padding: 0;
+    text-align: start;
+    color: red;
+    letter-spacing: 1px;
+    border: solid red 1px;
+    padding: 0.3rem 1rem;
+    border-radius: 4px;
+    background: #fff0f3;
+  }
+    .teacher-code__input {
+    display: none !important;
+  }
+  .teacher-code__input.show {
+    display: block !important;
+  }
+  .teacher-code_help-text {
+    display: none;
+    font-size: 1.2rem;
+  }
+  .ecc-affiliate {
+    width: 100%;
+    display: flex;
+    margin: 1.2rem 0;
+  }
+</style>
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="customer register section-{{ section.id }}-padding">
+  <svg style="display: none">
+    <symbol id="icon-error" viewBox="0 0 13 13">
+      <circle
+        cx="6.5"
+        cy="6.50049"
+        r="5.5"
+        stroke="white"
+        stroke-width="2" />
+      <circle
+        cx="6.5"
+        cy="6.5"
+        r="5.5"
+        fill="#EB001B"
+        stroke="#EB001B"
+        stroke-width="0.7" />
+      <path d="M5.87413 3.52832L5.97439 7.57216H7.02713L7.12739 3.52832H5.87413ZM6.50076 9.66091C6.88091 9.66091 7.18169 9.37267 7.18169 9.00504C7.18169 8.63742 6.88091 8.34917 6.50076 8.34917C6.12061 8.34917 5.81982 8.63742 5.81982 9.00504C5.81982 9.37267 6.12061 9.66091 6.50076 9.66091Z" fill="white" />
+      <path
+        d="M5.87413 3.17832H5.51535L5.52424 3.537L5.6245 7.58083L5.63296 7.92216H5.97439H7.02713H7.36856L7.37702 7.58083L7.47728 3.537L7.48617 3.17832H7.12739H5.87413ZM6.50076 10.0109C7.06121 10.0109 7.5317 9.57872 7.5317 9.00504C7.5317 8.43137 7.06121 7.99918 6.50076 7.99918C5.94031 7.99918 5.46982 8.43137 5.46982 9.00504C5.46982 9.57872 5.94031 10.0109 6.50076 10.0109Z"
+        fill="white"
+        stroke="#EB001B"
+        stroke-width="0.7">
+    </symbol>
+  </svg>
+  <h1>
+    {{ 'customer.register.title' | t }}
+  </h1>
+  <div id="default-register" class="s-content default-register">
+    <script>
   
 const tagMapping = {
   "00001": "ECCスタッフ・役員",
@@ -136,78 +209,6 @@ document.addEventListener('DOMContentLoaded', function() {
   updateCustomerTags();
 });
 </script>
-<style>
-  .code-help {
-    font-size: 11px;
-    margin-top: 2rem;
-    padding: 0;
-    text-align: start;
-    color: red;
-    letter-spacing: 1px;
-    border: solid red 1px;
-    padding: 0.3rem 1rem;
-    border-radius: 4px;
-    background: #fff0f3;
-  }
-    .teacher-code__input {
-    display: none !important;
-  }
-  .teacher-code__input.show {
-    display: block !important;
-  }
-  .teacher-code_help-text {
-    display: none;
-    font-size: 1.2rem;
-  }
-  .ecc-affiliate {
-    width: 100%;
-    display: flex;
-    margin: 1.2rem 0;
-  }
-</style>
-
-{%- style -%}
-  .section-{{ section.id }}-padding {
-    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
-    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
-  }
-
-  @media screen and (min-width: 750px) {
-    .section-{{ section.id }}-padding {
-      padding-top: {{ section.settings.padding_top }}px;
-      padding-bottom: {{ section.settings.padding_bottom }}px;
-    }
-  }
-{%- endstyle -%}
-
-<div class="customer register section-{{ section.id }}-padding">
-  <svg style="display: none">
-    <symbol id="icon-error" viewBox="0 0 13 13">
-      <circle
-        cx="6.5"
-        cy="6.50049"
-        r="5.5"
-        stroke="white"
-        stroke-width="2" />
-      <circle
-        cx="6.5"
-        cy="6.5"
-        r="5.5"
-        fill="#EB001B"
-        stroke="#EB001B"
-        stroke-width="0.7" />
-      <path d="M5.87413 3.52832L5.97439 7.57216H7.02713L7.12739 3.52832H5.87413ZM6.50076 9.66091C6.88091 9.66091 7.18169 9.37267 7.18169 9.00504C7.18169 8.63742 6.88091 8.34917 6.50076 8.34917C6.12061 8.34917 5.81982 8.63742 5.81982 9.00504C5.81982 9.37267 6.12061 9.66091 6.50076 9.66091Z" fill="white" />
-      <path
-        d="M5.87413 3.17832H5.51535L5.52424 3.537L5.6245 7.58083L5.63296 7.92216H5.97439H7.02713H7.36856L7.37702 7.58083L7.47728 3.537L7.48617 3.17832H7.12739H5.87413ZM6.50076 10.0109C7.06121 10.0109 7.5317 9.57872 7.5317 9.00504C7.5317 8.43137 7.06121 7.99918 6.50076 7.99918C5.94031 7.99918 5.46982 8.43137 5.46982 9.00504C5.46982 9.57872 5.94031 10.0109 6.50076 10.0109Z"
-        fill="white"
-        stroke="#EB001B"
-        stroke-width="0.7">
-    </symbol>
-  </svg>
-  <h1>
-    {{ 'customer.register.title' | t }}
-  </h1>
-  <div id="default-register" class="s-content default-register">
     {%- form 'create_customer', novalidate: 'novalidate' -%}
       {%- if form.errors -%}
         <h2
@@ -363,6 +364,137 @@ document.addEventListener('DOMContentLoaded', function() {
     {%- endform -%}
   </div>
   <div id="redirect-register" class="s-content redirect-register" style="display: none;">
+    <script>
+  
+const tagMapping = {
+  "00001": "ECCスタッフ・役員",
+  "00002": "HT",
+  "00003": "幼推講師",
+  "00004": "外語講師",
+  "00005": "ECCスタッフ紹介",
+  "00006": "ECC役員紹介",
+  "00007": "HT紹介",
+  "00008": "幼推講師紹介",
+  "00009": "外語紹介",
+  "00010": "ECCジュニア生・生徒保護者",
+  "00011": "ECC（外語）受講生・生徒",
+  "00012": "学園スタッフ",
+  "00013": "学園スタッフ紹介",
+  "00014": "ECC顧問",
+  "00015": "ベストワンオーナー",
+  "00016": "取引先・既存代理店",
+  "00017": "アンバサダー",
+  "00019": "提携園",
+  "00020": "ウノプリール",
+  "00021": "ウェルシアコクミン"
+};
+
+  function getURLParameter() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const redirectTo = urlParams.get('redirect_to');
+    console.log("redirect_to parameter:", redirectTo);
+
+    return redirectTo;
+  }
+
+function toggleCodeInputVisibility() {
+  console.log('toggleCodeInputVisibility start');
+  
+  const param = getURLParameter();
+  let checkbox = document.getElementById('ecc-affiliate-checkbox__redirect');
+
+
+  const codeInputContainer = document.getElementById('code-input-container');
+  
+  if (checkbox && codeInputContainer) {
+    codeInputContainer.style.display = checkbox.checked ? 'block' : 'none';
+  } else {
+    console.error('Checkbox or code input container not found');
+  }
+  console.log('toggleCodeInputVisibility end');
+}
+
+function updateCustomerTags() {
+  
+  const customerCodeElement = document.getElementById('RegisterForm-code');
+  const teacherCodeInput = document.querySelector('.teacher-code__input');
+  const customerTagsElement = document.getElementById('customer_tags');
+  const checkbox = document.getElementById('ecc-affiliate-checkbox');
+  
+  if (!customerCodeElement || !teacherCodeInput || !customerTagsElement || !checkbox) {
+    console.error('One or more required elements are missing');
+    return;
+  }
+
+  const customerCode = checkbox.checked ? customerCodeElement.value : '';
+  
+  if (customerCode == "00001" || customerCode == "00002" || customerCode == "00003" || customerCode == "00004") {
+    teacherCodeInput.classList.add('show');
+    console.log('shown');
+  } else {
+    teacherCodeInput.classList.remove('show');
+    const inputElement = teacherCodeInput.querySelector('input');
+    if (inputElement) {
+      inputElement.value = ''; 
+    }
+    console.log('hidden');
+  }
+  console.log('入力されたコード:', customerCode);
+    
+  const customerTag = checkbox.checked ? (tagMapping[customerCode] || "一般会員") : "一般会員";
+  console.log('設定されたタグ:', customerTag);
+
+  customerTagsElement.value = customerTag;
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  const codeInput = document.getElementById('RegisterForm-code');
+  const form = document.querySelector('form');
+  const checkbox = document.getElementById('ecc-affiliate-checkbox');
+  
+  if (checkbox) {
+    checkbox.addEventListener('change', function() {
+      console.log('change')
+      toggleCodeInputVisibility();
+       console.log('change')
+      updateCustomerTags();
+       console.log('change')
+    });
+  } else {
+    console.error('ecc-affiliate-checkbox element not found');
+  }
+  
+  if (codeInput) {
+    codeInput.addEventListener('input', updateCustomerTags);
+    console.log('イベントリスナーが設定されました');
+  } else {
+    console.error('RegisterForm-code 要素が見つかりません');
+  }
+  
+  if (form) {
+    form.addEventListener('submit', function(e) {
+      const teacherCodeElement = document.getElementById('teacher-code');
+      const customerNoteInput = document.querySelector('input[name="customer[note][講師コード]"]');
+      
+      if (teacherCodeElement && customerNoteInput) {
+        const teacherCode = teacherCodeElement.value;
+        if (teacherCode) {
+          customerNoteInput.value = `講師コード: ${teacherCode}`;
+          console.log(customerNoteInput.value);
+        }
+      } else {
+        console.error('teacher-code または customer[note][講師コード] 要素が見つかりません');
+      }
+    });
+  } else {
+    console.error('フォーム要素が見つかりません');
+  }
+
+  // 初期化時にも実行
+  toggleCodeInputVisibility();
+  updateCustomerTags();
+});
+</script>
     {%- form 'create_customer', novalidate: 'novalidate' -%}
       <input type="hidden" name="checkout_url" value="/cart">
       {%- if form.errors -%}
