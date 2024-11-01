@@ -1,6 +1,6 @@
 {{ 'customer.css' | asset_url | stylesheet_tag }}
 <script>
-  <script>
+  
 const tagMapping = {
   "00001": "ECCスタッフ・役員",
   "00002": "HT",
@@ -25,56 +25,69 @@ const tagMapping = {
 };
 
 function toggleCodeInputVisibility() {
-  const checkboxes = document.querySelectorAll('.ecc-affiliate-checkbox');
+  console.log('toggleCodeInputVisibilit')
+  const checkbox = document.getElementById('ecc-affiliate-checkbox');
   const codeInputContainer = document.getElementById('code-input-container');
-  if (codeInputContainer) {
-    const isChecked = Array.from(checkboxes).some(checkbox => checkbox.checked);
-    codeInputContainer.style.display = isChecked ? 'block' : 'none';
+  
+  if (checkbox && codeInputContainer) {
+    codeInputContainer.style.display = checkbox.checked ? 'block' : 'none';
   }
+  console.log('toggleCodeInputVisibilit end')
 }
 
 function updateCustomerTags() {
+  
   const customerCodeElement = document.getElementById('RegisterForm-code');
   const teacherCodeInput = document.querySelector('.teacher-code__input');
   const customerTagsElement = document.getElementById('customer_tags');
-  const checkboxes = document.querySelectorAll('.ecc-affiliate-checkbox');
+  const checkbox = document.getElementById('ecc-affiliate-checkbox');
   
-  if (!customerCodeElement || !teacherCodeInput || !customerTagsElement || checkboxes.length === 0) {
+  if (!customerCodeElement || !teacherCodeInput || !customerTagsElement || !checkbox) {
     console.error('One or more required elements are missing');
     return;
   }
 
-  const isChecked = Array.from(checkboxes).some(checkbox => checkbox.checked);
-  const customerCode = isChecked ? customerCodeElement.value : '';
-
+  const customerCode = checkbox.checked ? customerCodeElement.value : '';
+  
   if (customerCode == "00001" || customerCode == "00002" || customerCode == "00003" || customerCode == "00004") {
     teacherCodeInput.classList.add('show');
+    console.log('shown');
   } else {
     teacherCodeInput.classList.remove('show');
     const inputElement = teacherCodeInput.querySelector('input');
     if (inputElement) {
       inputElement.value = ''; 
     }
+    console.log('hidden');
   }
-  
-  const customerTag = isChecked ? (tagMapping[customerCode] || "一般会員") : "一般会員";
+  console.log('入力されたコード:', customerCode);
+    
+  const customerTag = checkbox.checked ? (tagMapping[customerCode] || "一般会員") : "一般会員";
+  console.log('設定されたタグ:', customerTag);
+
   customerTagsElement.value = customerTag;
 }
 
 document.addEventListener('DOMContentLoaded', function() {
   const codeInput = document.getElementById('RegisterForm-code');
   const form = document.querySelector('form');
-  const checkboxes = document.querySelectorAll('.ecc-affiliate-checkbox');
-
-  checkboxes.forEach(checkbox => {
+  const checkbox = document.getElementById('ecc-affiliate-checkbox');
+  
+  if (checkbox) {
     checkbox.addEventListener('change', function() {
+      console.log('change')
       toggleCodeInputVisibility();
+       console.log('change')
       updateCustomerTags();
+       console.log('change')
     });
-  });
+  } else {
+    console.error('ecc-affiliate-checkbox element not found');
+  }
   
   if (codeInput) {
     codeInput.addEventListener('input', updateCustomerTags);
+    console.log('イベントリスナーが設定されました');
   } else {
     console.error('RegisterForm-code 要素が見つかりません');
   }
@@ -88,6 +101,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const teacherCode = teacherCodeElement.value;
         if (teacherCode) {
           customerNoteInput.value = `講師コード: ${teacherCode}`;
+          console.log(customerNoteInput.value);
         }
       } else {
         console.error('teacher-code または customer[note][講師コード] 要素が見つかりません');
@@ -97,11 +111,36 @@ document.addEventListener('DOMContentLoaded', function() {
     console.error('フォーム要素が見つかりません');
   }
 
+  // 初期化時にも実行
   toggleCodeInputVisibility();
   updateCustomerTags();
 });
 </script>
+<script>
+  function getURLParameter() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const redirectTo = urlParams.get('redirect_to');
+    console.log("redirect_to parameter:", redirectTo);
 
+    return redirectTo;
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    const param = getURLParameter();
+    if(param === "checkout") {
+       console.log('1')
+      const redirectRegister = document.getElementById('redirect-register');
+      if(redirectRegister){
+        console.log('redirectRegister is Not Defined...')
+      }
+      redirectRegister.style.display = "block";
+      const defaultRegister = document.getElementById('default-register');
+      if(defaultRegister){
+        console.log('defaultRegister is Not Defined...')
+      }
+      defaultRegister.style.display = "none";
+    }
+  });
 </script>
 <style>
   .code-help {
