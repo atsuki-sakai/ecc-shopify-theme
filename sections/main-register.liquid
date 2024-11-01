@@ -136,32 +136,6 @@ document.addEventListener('DOMContentLoaded', function() {
   updateCustomerTags();
 });
 </script>
-<script>
-  function getURLParameter() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const redirectTo = urlParams.get('redirect_to');
-    console.log("redirect_to parameter:", redirectTo);
-
-    return redirectTo;
-  }
-
-  document.addEventListener('DOMContentLoaded', function() {
-    const param = getURLParameter();
-    if(param === "checkout") {
-       console.log('1')
-      const redirectRegister = document.getElementById('redirect-register');
-      if(redirectRegister){
-        console.log('redirectRegister is Not Defined...')
-      }
-      redirectRegister.style.display = "block";
-      const defaultRegister = document.getElementById('default-register');
-      if(defaultRegister){
-        console.log('defaultRegister is Not Defined...')
-      }
-      defaultRegister.style.display = "none";
-    }
-  });
-</script>
 <style>
   .code-help {
     font-size: 11px;
