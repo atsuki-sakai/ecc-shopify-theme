@@ -316,6 +316,125 @@
                 {% assign flag = true %}
               {% endif %}
 
+              <style>
+                .custom-cart-section {
+                  width: 100%;
+                  margin: 0 auto;
+                  font-size: 1.6rem;
+                  padding: 2rem 0;
+                }
+                .custom-cart-header__title {
+                      margin-top: 3rem;
+                      margin-bottom: 1rem;
+                      font-size: 2rem;
+                      line-height: 1.2;
+                      color: #2c3e50;
+                      width: fit-content;
+                      letter-spacing: 2px;
+                      font-weight: bold;
+                }
+                .custom-cart-header__text {
+                  font-size: 1.4rem;
+                  line-height: 1.6;
+
+                  color: #34495e;
+                  margin-bottom: 2rem;
+                }
+                .custom-cart-section__inner {
+                  width: 100%;
+                  display: flex;
+                  flex-direction: column;
+                  gap: 2rem;
+                }
+                .custom-cart-section__inner-item {
+                  width: 100%;
+
+                }
+                .custom-cart-section__inner-item h3 {
+                  display: block;
+                  color: #2c3e50;
+                  margin-bottom: 1rem;
+                  font-size: 2rem;
+                }
+
+                .cbtn {
+                  font-size: 1.5rem;
+                  display: block;
+                  padding: 1rem 3rem;
+                  border-radius: 6px;
+                  font-weight: 600;
+                  transition: all 0.3s ease;
+                  width: fit-content;
+                }
+                .cbtn-main {
+                  background-color: blue;
+                  color: white;
+                  border: none;
+                }
+                .cbtn-main:hover {
+                  background-color: #bdc3c7;
+                }
+                .cbtn-primary {
+                  background-color: gray;
+                  color: white;
+                  border: none;
+                }
+                .cbtn-primary:hover {
+                  background-color: #2980b9;
+                }
+                .cbtn-secondary {
+                  width: fit-content;
+                  background-color: green;
+                  color: white;
+                }
+                .cbtn-secondary:hover {
+                  background-color: #bdc3c7;
+                }
+
+                .c-helptext {
+                  margin: 1.4rem 0;
+                  font-size: 1.4rem;
+                  color: gray;
+                  display: inline-block;
+                  line-height: 2rem;
+                }
+              </style>
+
+              <div class="custom-cart-section">
+                <div class="custom-cart-header">
+                  {% unless customer %}
+                    <p class="custom-cart-header__text">{{ section.settings['header-desc'] }}</p>
+                  {% endunless %}
+                  <h4 class="custom-cart-header__title">{{ section.settings['purchase-text'] }}</h4>
+                </div>
+                <div class="custom-cart-section__inner">
+                  <div class="custom-cart-section__inner-item">
+                    {% if customer %}
+                      <h5 style="font-weight: bold; color: green; background: white; border: solid 1px green; border-radius: 999px; text-align: center; padding: 1rem 0;">
+                        {{ section.settings.logged -}}
+                      </h5>
+                    {% else %}
+                      <h3>{{ section.settings['member-customer'] }}</h3>
+                      <div class="mt-3">
+                        <a href="{{ routes.account_login_url }}?redirect_to=checkout" class="cbtn cbtn-main">
+                          {{- section.settings['login-text'] -}}
+                        </a>
+                        <p class="c-helptext">{{ section.settings['login-desc'] }}</p>
+                      </div>
+                    {% endif %}
+                  </div>
+                  {% unless customer %}
+                    <div class="custom-cart-section__inner-item">
+                      <h3>{{ section.settings['register-text'] }}</h3>
+                      <a href="{{ routes.account_register_url }}?redirect_to=checkout" class="cbtn cbtn-secondary">
+                        {{- section.settings['membership-text'] -}}
+                      </a>
+                      <span class="c-helptext">{{ section.settings['membership-desc'] }}</span>
+                    </div>
+                  {% endunless %}
+                </div>
+              </div>
+
               <div
                 style="{% if flag %}display: none; {% else %}{% endif %} display"
                 class="cart__ctas"
@@ -362,62 +481,8 @@
   Samitaの処理が終わるまでcheckoutボタンを押せなくする。
   処理が終わるまでにChekoutボタンを押して決済ページに行くと割引が適応されないため。
 {% endcomment %}
-<!-- <script>
-document.addEventListener('DOMContentLoaded', () => {
-  
-    const checkForElement = () => {
-        const targetElement = document.querySelector('[samitaws-cart-subtotal-price]');
-      
-        const buyButtons = document.getElementsByClassName('cart__ctas');
-        const buyButton = buyButtons[0].firstElementChild; 
 
-        buyButton.innerText = "読み込み中...";
-        buyButton.style.pointerEvents = "none";
-        buyButton.style.cursor = "not-allowed";
-        
-        if (targetElement) {
-        
-            console.log('要素が見つかりました:', targetElement);
-            let previousValue = targetElement.getAttribute('samitaws-cart-subtotal-price');
-            console.log('初期値:', typeof previousValue);
 
-            // previousValueが存在しない場合、ボタンを表示
-            if (previousValue === "false") {
-                buyButton.innerText = {{ 'sections.cart.checkout' | t | json }};
-                buyButton.style.pointerEvents = "auto";
-                buyButton.style.cursor = "pointer";
-                return;
-            }
-
-            const observer = new MutationObserver(mutations => {
-                mutations.forEach(mutation => {
-                    if (mutation.type === 'attributes' && mutation.attributeName === 'samitaws-cart-subtotal-price') {
-                        const newValue = targetElement.getAttribute('samitaws-cart-subtotal-price');
-                        if (newValue !== previousValue) {
-                            console.log('samitaws-cart-subtotal-priceが変更されました！');
-                            previousValue = newValue; // 新しい値を保存
-                            buyButton.innerText = {{ 'sections.cart.checkout' | t | json }};
-                            buyButton.style.pointerEvents = "auto";
-                            buyButton.style.cursor = "pointer";
-                        }
-                    }
-                });
-            });
-
-            observer.observe(targetElement, {
-                attributes: true // 属性の変更を監視
-            });
-        } else {
-            console.error('指定された要素が見つかりません');
-            setTimeout(checkForElement, 1000); // 1秒後に再チェック
-        }
-    };
-
-    checkForElement(); // 初回呼び出し
-});
-</script>
-
- -->
 {% schema %}
 {
   "name": "t:sections.main-cart-footer.name",
