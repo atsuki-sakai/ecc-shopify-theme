@@ -23,15 +23,18 @@ const tagMapping = {
 };
 
 function toggleCodeInputVisibility() {
+  console.log('toggleCodeInputVisibilit')
   const checkbox = document.getElementById('ecc-affiliate-checkbox');
   const codeInputContainer = document.getElementById('code-input-container');
   
   if (checkbox && codeInputContainer) {
     codeInputContainer.style.display = checkbox.checked ? 'block' : 'none';
   }
+  console.log('toggleCodeInputVisibilit end')
 }
 
 function updateCustomerTags() {
+  
   const customerCodeElement = document.getElementById('RegisterForm-code');
   const teacherCodeInput = document.querySelector('.teacher-code__input');
   const customerTagsElement = document.getElementById('customer_tags');
