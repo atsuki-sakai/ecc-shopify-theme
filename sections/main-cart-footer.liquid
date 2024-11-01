@@ -481,6 +481,60 @@
   Samitaの処理が終わるまでcheckoutボタンを押せなくする。
   処理が終わるまでにChekoutボタンを押して決済ページに行くと割引が適応されないため。
 {% endcomment %}
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  
+    const checkForElement = () => {
+        const targetElement = document.querySelector('[samitaws-cart-subtotal-price]');
+      
+        const buyButtons = document.getElementsByClassName('cart__ctas');
+        const buyButton = buyButtons[0].firstElementChild; 
+
+        buyButton.innerText = "読み込み中...";
+        buyButton.style.pointerEvents = "none";
+        buyButton.style.cursor = "not-allowed";
+        
+        if (targetElement) {
+        
+            console.log('要素が見つかりました:', targetElement);
+            let previousValue = targetElement.getAttribute('samitaws-cart-subtotal-price');
+            console.log('初期値:', typeof previousValue);
+
+            // previousValueが存在しない場合、ボタンを表示
+            if (previousValue === "false") {
+                buyButton.innerText = {{ 'sections.cart.checkout' | t | json }};
+                buyButton.style.pointerEvents = "auto";
+                buyButton.style.cursor = "pointer";
+                return;
+            }
+
+            const observer = new MutationObserver(mutations => {
+                mutations.forEach(mutation => {
+                    if (mutation.type === 'attributes' && mutation.attributeName === 'samitaws-cart-subtotal-price') {
+                        const newValue = targetElement.getAttribute('samitaws-cart-subtotal-price');
+                        if (newValue !== previousValue) {
+                            console.log('samitaws-cart-subtotal-priceが変更されました！');
+                            previousValue = newValue; // 新しい値を保存
+                            buyButton.innerText = {{ 'sections.cart.checkout' | t | json }};
+                            buyButton.style.pointerEvents = "auto";
+                            buyButton.style.cursor = "pointer";
+                        }
+                    }
+                });
+            });
+
+            observer.observe(targetElement, {
+                attributes: true // 属性の変更を監視
+            });
+        } else {
+            console.error('指定された要素が見つかりません');
+            setTimeout(checkForElement, 1000); // 1秒後に再チェック
+        }
+    };
+
+    checkForElement(); // 初回呼び出し
+});
+</script>
 
 
 {% schema %}
