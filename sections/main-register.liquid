@@ -24,9 +24,24 @@ const tagMapping = {
   "00021": "ウェルシアコクミン"
 };
 
+  function getURLParameter() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const redirectTo = urlParams.get('redirect_to');
+    console.log("redirect_to parameter:", redirectTo);
+
+    return redirectTo;
+  }
+
 function toggleCodeInputVisibility() {
   console.log('toggleCodeInputVisibilit')
-  const checkbox = document.getElementById('ecc-affiliate-checkbox');
+  ecc-affiliate-checkbox__redirect
+
+  let checkbox;
+  const param = getURLParameter();
+  checkbox = document.getElementById('ecc-affiliate-checkbox');
+  if(param === "checkout") {
+    checkbox = document.getElementById('ecc-affiliate-checkbox__redirect');
+  }
   const codeInputContainer = document.getElementById('code-input-container');
   
   if (checkbox && codeInputContainer) {
@@ -428,7 +443,7 @@ document.addEventListener('DOMContentLoaded', function() {
         </label>
       </div>
       <div class="ecc-affiliate">
-        <input type="checkbox" id="ecc-affiliate-checkbox">
+        <input type="checkbox" id="ecc-affiliate-checkbox__redirect">
         <span>ECCの関係者ですか？</span>
       </div>
       <div id="code-input-container" class="field" style="margin-top: 0; display: none;">
