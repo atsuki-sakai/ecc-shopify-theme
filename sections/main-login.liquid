@@ -193,7 +193,7 @@
 
     <div id="redirect-login" style="display: none;">
       {%- form 'customer_login', novalidate: 'novalidate' -%}
-        <input type="hidden" name="checkout_url" value="/checkout">
+        <input type="hidden" name="checkout_url" value="/cart">
         {%- if form.errors -%}
           <h2 class="form__message" tabindex="-1" autofocus>
             <span class="visually-hidden">{{ 'accessibility.error' | t }} </span>
